@@ -1,0 +1,221 @@
+body {
+    margin: 0;
+    font-family: "raleway";
+    overflow-x: hidden;
+    background-color: rgb(122, 8, 8);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: aqua;
+    background-color: rgb(122, 8, 8);
+    margin-left: 0px;
+    height: 80px;
+}
+
+.logo {
+    color: #fff;
+    font-size: 20px;
+}
+
+.logo-img {
+    width: 40px;
+    height: auto;
+    vertical-align: middle;
+    /* vertical no centro. */
+}
+
+.nav-itens {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    height: 50%;
+}
+
+.nav-itens>li>a {
+    padding-left: 50px;
+    color: #ffffff;
+}
+
+.nav-itens>li>a:hover {
+    color: #FFAE34;
+}
+
+.banner {
+    text-align: center;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    max-height: 800px;
+    background-size: cover;
+}
+
+.banner-content {
+    position: absolute;
+    /*elementos dentro do banner */
+    top: 40%;
+    /*  verticalmente na metade do banner */
+    left: 50%;
+    /* banner */
+    transform: translate(-50%, -50%);
+    /* Alinhe ao centro, tanto vertical quanto horizontalmente */
+    color: #fff;
+    text-align: center;
+}
+
+.banner-content h1 {
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+.banner-content h3 {
+    margin-top: 15px;
+    font-size: 17px;
+}
+
+.divEmpresaMaior {
+    height: 99vh;
+}
+
+.divCoisasEmpresas {
+    margin-top: 100px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    margin-right: 130px;
+}
+
+.visao {
+    text-align: center;
+    margin-inline-start: 150px;
+    width: 215px;
+}
+
+.imgVisao {
+    width: 50%;
+    align-items: center;
+}
+
+.tituloVisao {
+    margin-top: 10px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.pVisao {
+    color: white;
+}
+
+.missao {
+    text-align: center;
+    margin-inline-start: 150px;
+    width: 215px;
+}
+
+.imgMissao {
+    width: 50%;
+    align-items: center;
+}
+
+.tituloMissao {
+    margin-top: 10px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.pMissao {
+    color: white;
+}
+
+.valores {
+    text-align: center;
+    margin-inline-start: 150px;
+    width: 215px;
+}
+
+.imgValores {
+    margin-top: 20px;
+    width: 40%;
+    align-items: center;
+}
+
+.tituloValores {
+    margin-top: 10px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.pValores {
+    color: white;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 100px;
+  }
+
+  .forms-contato {
+    flex: 1;
+    margin-right: 30px;
+    margin-left: 60px;
+  }
+  
+  .chamada-forms {
+    flex: 1;
+    color: #fdf2cd;
+    text-align: center;
+    margin-top: 90px;
+  }
+  
+  .chamada-forms >  button{
+    background-color: #ffae34;
+    color: #2b2828;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    width: 22%;
+    margin-top: 10px;
+  }
+  
+  .wpp{
+    display: flex; 
+    transform: translate(
+      32%,
+      30%
+    );
+  }
+  
+  .wpp > p {
+    margin-left:15px;
+  }
+  
+  
+  /* FOOTER */
+  .rodape{
+      background-color: #343434;
+      position: static;
+      height: 120px;
+  }
+  
+  address{
+      top: 50%; /*  verticalmente na metade do banner */
+      left: 30%; /* banner */
+      transform: translate(-35%, 30%); /* Alinhe ao centro, tanto vertical quanto horizontalmente */
+      color: #fff;
+      text-align: center; 
+      font-size: 14px;
+  }
+  
+  .img-rodape{
+      display: flex;
+      align-items: center;
+  }
