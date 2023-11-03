@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+  }
+  
+  .container {
+    display: flex;
+  }
+  
+  .esquerda {
+    background-color: black;
+    width: 40vw;
+    height: 100vh;
+  }
+  
+  .esquerda img {
+    width: 30vw;
+    height: 60vh;
+    margin-left: 2.5vw;
+    margin-right: 2.5vw;
+    margin-top: 17.5vh;
+  }
+  
+  h1 {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'raleway';
+  }
+  span {
+    font-family: 'raleway';
+  }
+  a {
+    text-decoration: none;
+  }
+  .direito {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .logo {
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 70px;
+    max-height: 100px;
+    height: 100vh;
+  }
+  
+  .input-cliente {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+  }
+  .input-cliente {
+    margin-left: 0%;
+  }
+  input {
+    font-family: 'raleway';
+    padding: 0.3rem 5px;
+    background-color: rgb(224, 224, 224);
+    width: 357px;
+    border-radius: 5px;
+    padding: 1rem 0.5rem;
+    margin-bottom: 2.5rem;
+    flex-direction: column;
+  }
+  
+  .desing {
+    flex-direction: row;
+  }
+  
+  .botao {
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #ffbc59;
+    width: 100px;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 30px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    font-family: 'raleway';
+  }
+  
+  .botao:hover {
+    background-color: #ff9900;
+  }
+  
+  .apoio {
+    margin: 5%;
+    display: flex;
+    justify-content: center;
+    color: rgb(38, 0, 176);
+    font-family: 'raleway';
+    font-size: 14px;
+  }
+  
+  .lnr-eye {
+    position: absolute;
+    margin-left: 20%;
+    margin-top: 11%;
+    cursor: pointer;
+  }
+  
+  .inpMostrarSenha{
+    margin-right: 35%;
+    margin-top: -3%;
+  }
+  
+  .spanMostrarSenha{
+    margin-right: 20%;
+    margin-top: -5.9%;
+    margin-bottom: 5%;
+  }

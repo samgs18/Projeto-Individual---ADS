@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../landingPage/imagens/logo_moto.png" type="image/png">
+    <title>Sensorize</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <img src="../landingPage/imagens/moto_banner.jpg" style="opacity: 0.1; width: 100%;" alt="">
+        <img class="logo" src="../landingPage/imagens/logo_moto.png" alt="">
+        <h1>Login</h1>
+        <div class="cadastro">
+            <div class="input-cliente">
+                <span style="margin-right: 320px;">Email</span>
+                <input type="text" id="inp_login" placeholder="Ex: treinofit@gmail.com">
+                <span style="margin-right: 320px;">Senha</span>
+                <input type="password" id="inp_senha" placeholder="Ex: ######">
+                <input class="inpMostrarSenha" type="checkbox" onclick="mostrarSenha()">
+                <span class="spanMostrarSenha">Mostrar senha</span>
+            </div>
+        </div>
+        <div style="flex-direction: row; margin-left: auto; margin-right: auto;">
+            <button class="botao" onclick="login()">
+                Entrar
+            </button>
+            <a href="../Landing Page/index.html">
+                <button class="botao">
+                    Voltar
+                </button>
+            </a><br><br>
+            <a class="apoio" href="../Dados do cliente/index_cliente.html">Cadastre-se</a>
+            <a class="apoio" href="">Esqueci a Senha</a>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function mostrarSenha() {
+        var olho = document.getElementById("inp_senha");
+        if (olho.type == "password") {
+            olho.type = "text";
+        }
+        else {
+            olho.type = "password";
+        }
+    }
+</script>
