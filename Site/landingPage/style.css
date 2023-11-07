@@ -97,6 +97,23 @@ body {
     text-transform: uppercase;
     font-style: italic;
 }
+
+
+
+.text_services {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.text_services p {
+  max-width: 600px;
+  text-align: justify;
+}
+
 /* SOBRE */
 .tituloClientes {
     margin-top: 1000px;
