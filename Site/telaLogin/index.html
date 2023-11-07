@@ -2,7 +2,10 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de Login</title>
+    <link rel="icon" href="../landingPage/imagens/logo_moto.png" type="image/png">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,10 +16,11 @@
         <input type="text" id="inp_login" placeholder="Ex: moto123@gmail.com">
         <span style="margin-right: 320px;">Senha</span>
         <input type="password" id="inp_senha" placeholder="Ex: ######">
-        <input class="inpMostrarSenha" type="checkbox" onclick="mostrarSenha()">
+        <input class="inpMostrarSenha" type="checkbox" onclick="mostrarSenha()"><br>
         <span class="spanMostrarSenha">Mostrar senha</span><br>
-        <a href="../landingPage/index.html">
-            <button onclick="login()">Entrar</button></a>
+        <a>
+            <button onclick="login()">Entrar</button>
+        </a>
         <a href="../landingPage/index.html">
             <button class="botao">
                 Voltar
@@ -28,8 +32,21 @@
 
     <script>
         function login() {
-            alert("Login realizado com sucesso!"); // Substitua pelo seu código de autenticação
-            href = "../landingPage/index.html";
+            var email = inp_login.value;
+            var senha = inp_senha.value;
+            
+            if (
+                email == "" || 
+                email.indexOf('@') == -1 || 
+                email.indexOf('.') == -1 ||
+                senha == "" || 
+                senha.length < 8
+                ) {
+                    alert("Credenciais inválidas!")
+                } else {
+                alert("Login realizado com sucesso!"); // Substitua pelo seu código de autenticação
+                window.location.href = "../dashboard/index.html";
+            }
         }
         function mostrarSenha() {
             var olho = document.getElementById("inp_senha");

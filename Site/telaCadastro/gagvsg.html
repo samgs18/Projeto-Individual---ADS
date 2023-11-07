@@ -1,50 +1,12 @@
-<!DOCTYPE html>
 <html>
+    <head>
+    <title>ViaCEP Webservice</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<head>
-    <title>Tela de Cadastro</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <div class="cadastro-container">
-        <h2>Tela de Cadastro</h2>
-        <form method="get" action=".">
-            <label>Cep:
-            <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
-                   onblur="pesquisacep(this.value);" /></label><br />
-            <label>Rua:
-            <input name="rua" type="text" id="rua" size="60" /></label><br />
-            <label>Bairro:
-            <input name="bairro" type="text" id="bairro" size="40" /></label><br />
-            <label>Cidade:
-            <input name="cidade" type="text" id="cidade" size="40" /></label><br />
-            <label>Estado:
-            <input name="uf" type="text" id="uf" size="2" /></label><br />
-            <label>IBGE:
-            <input name="ibge" type="text" id="ibge" size="8" /></label><br />
-          </form>
-        <!-- <input type="text" placeholder="Nome">
-        <input type="text" placeholder="CEP" id="cep"
-        onblur="pesquisacep(this.value);">
-        <input type="text" placeholder="Rua" id="rua">
-        <input type="text" placeholder="Bairro" id="bairro">
-        <input type="text" placeholder="Cidade" id="cidade">
-        <input type="text" placeholder="UF" id="uf"> -->
-        <!-- <input type="text" placeholder="Tem moto?">
-        <input type="text" placeholder="Modelo da moto">
-        <input type="text" placeholder="Email">
-        <input type="password" placeholder="Senha">
-        <input type="password" placeholder="Confirme a senha"><br> -->
-        <button onclick="cadastrar()">Cadastrar</button><br>
-    </div>
-
+    <!-- Adicionando Javascript -->
     <script>
-        function cadastrar() {
-            alert("Cadastro realizado com sucesso!"); // Substitua pelo seu código de cadastro
-        }
     
-        function limpa_formulário_cep() {
+    function limpa_formulário_cep() {
             //Limpa valores do formulário de cep.
             document.getElementById('rua').value=("");
             document.getElementById('bairro').value=("");
@@ -111,7 +73,28 @@
             limpa_formulário_cep();
         }
     };
-    </script>
-</body>
 
-</html>
+    </script>
+    </head>
+
+    <body>
+    <!-- Inicio do formulario -->
+      <form method="get" action=".">
+        <label>Cep:
+        <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
+               onblur="pesquisacep(this.value);" /></label><br />
+        <label>Rua:
+        <input name="rua" type="text" id="rua" size="60" /></label><br />
+        <label>Bairro:
+        <input name="bairro" type="text" id="bairro" size="40" /></label><br />
+        <label>Cidade:
+        <input name="cidade" type="text" id="cidade" size="40" /></label><br />
+        <label>Estado:
+        <input name="uf" type="text" id="uf" size="2" /></label><br />
+        <label>IBGE:
+        <input name="ibge" type="text" id="ibge" size="8" /></label><br />
+      </form>
+    </body>
+
+    </html>
+    

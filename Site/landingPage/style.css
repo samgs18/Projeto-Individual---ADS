@@ -72,15 +72,21 @@ body {
     color: #FFAE34;
 }
 /* BANNER */
+
+main {
+}
+
 .banner {
     text-align: center;
+  padding-top: -80px;
+
 }
 
 .banner img {
     width: 100%;
     height: auto;
     max-height: 700px;
-    background-size: cover;
+    /* background-size: cover; */
     height: 100vh;
 }
 
@@ -98,7 +104,12 @@ body {
     font-style: italic;
 }
 
-
+.sobre {
+  background-image: url(imagens/motor_modelos.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 610px;
+}
 
 .text_services {
   display: flex;
@@ -124,7 +135,8 @@ body {
   }
   
   .divMaiorCli {
-    height: 100vh;
+    height: 630px;
+    /* height: 80vh; */
     align-items: center;
     justify-content: center;
   }
