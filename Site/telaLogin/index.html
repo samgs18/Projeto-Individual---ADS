@@ -11,7 +11,32 @@
 </head>
 
 <body>
-    <div class="container">
+
+    <div class="banner">
+        <img src="./imagens/moto_banner.jpg" alt="banner" class="banner-img">
+        <div class="banner-content">
+                    <span style="margin-right: 320px;">Email</span>
+                    <input type="text" id="inp_login" placeholder="Ex: treinofit@gmail.com">
+                    <span style="margin-right: 320px;">Senha</span>
+                    <input type="password" id="inp_senha" placeholder="Ex: ######">
+                    <input class="inpMostrarSenha" type="checkbox" onclick="mostrarSenha()">
+                    <span class="spanMostrarSenha">Mostrar senha</span>
+            <div style="flex-direction: row; margin-left: auto; margin-right: auto;">
+                <button class="botao" onclick="login()">
+                    Entrar
+                </button>
+                <a href="../Landing Page/index.html">
+                    <button class="botao">
+                        Voltar
+                    </button>
+                </a><br><br>
+                <a class="apoio" href="../Dados do cliente/index_cliente.html">Cadastre-se</a>
+                <a class="apoio" href="">Esqueci a Senha</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="container">
         <img src="../landingPage/imagens/moto_banner.jpg" style="opacity: 0.1; width: 100%;" alt="">
         <img class="logo" src="../landingPage/imagens/logo_moto.png" alt="">
         <h1>Login</h1>
@@ -38,7 +63,7 @@
             <a class="apoio" href="">Esqueci a Senha</a>
         </div>
     </div>
-    </div>
+    </div> -->
 </body>
 
 </html>

@@ -2,9 +2,25 @@ body {
     margin: 0;
   }
   
-  .container {
-    display: flex;
-  }
+  .banner {
+    text-align: center;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    max-height: 700px;
+    background-size: cover;
+    height: 100vh;
+}
+
+.banner-content {
+    position: absolute;
+    top: 20%;
+    right: 45%;    
+    color: #fff;
+    text-align: center;
+}
   
   .esquerda {
     background-color: black;
