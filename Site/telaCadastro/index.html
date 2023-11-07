@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tela de Cadastro</title>
+    <style>
+        body {
+            background-image: url('../landingPage/imagens/motor_modelos.jpeg');
+            /* Substitua 'caminho_para_sua_imagem.jpg' pelo caminho real da sua imagem */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cadastro-container {
+            width: 50%;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .cadastro-container h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .cadastro-container input {
+            width: 50%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .cadastro-container button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cadastro-container">
+        <h2>Tela de Cadastro</h2>
+        <input type="text" placeholder="Nome">
+        <input type="text" placeholder="Sobrenome">
+        <input type="text" placeholder="CEP">
+        <input type="text" placeholder="Tem moto?">
+        <input type="text" placeholder="Modelo da moto">
+        <input type="text" placeholder="Email">
+        <input type="password" placeholder="Senha">
+        <input type="password" placeholder="Confirme a senha"><br>
+        <button onclick="cadastrar()">Cadastrar</button><br>
+    </div>
+
+    <script>
+        function cadastrar() {
+            alert("Cadastro realizado com sucesso!"); // Substitua pelo seu código de cadastro
+        }
+    </script>
+</body>
+
+</html>
