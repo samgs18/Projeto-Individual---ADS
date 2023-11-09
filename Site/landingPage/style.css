@@ -1,114 +1,115 @@
 ::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: white;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #bd0404;
-    border-radius: 10px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgb(0, 0, 0);
-    border-radius: 10px;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-  
-body {
-    margin: 0;
-    font-family: "raleway";
-    overflow-x: hidden;
-    background-color: rgb(24, 24, 24);
+  width: 10px;
 }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bd0404;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 0, 0);
+  border-radius: 10px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "raleway";
+  overflow-x: hidden;
+  background-color: rgb(24, 24, 24);
+}
+
 /* HEADER */
 .nav {
-    background-color: rgb(75, 16, 16);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: #ffffff;
-    margin: 0;
-    position: fixed;
-    padding-top: 3px;
-    padding-bottom: 5px;
-    width: 100%;
-    transition: 0.3s ease-in-out;
-    z-index: 2;
+  background-color: rgb(75, 16, 16);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #ffffff;
+  margin: 0;
+  position: fixed;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  width: 100%;
+  transition: 0.3s ease-in-out;
+  z-index: 2;
 }
 
 .logo {
-    color: #fff;
-    font-size: 20px;
+  color: #fff;
+  font-size: 20px;
 }
 
 .logo-img {
-    width: 40px;
-    height: auto;
-    vertical-align: middle;
+  width: 40px;
+  height: auto;
+  vertical-align: middle;
 }
 
 .nav-itens {
-    list-style: none;
-    display: flex;
-    justify-content: flex-start;
-    height: 50%;
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  height: 50%;
 }
 
 .nav-itens>li>a {
-    padding-left: 50px;
-    color: #ffffff;
+  padding-left: 50px;
+  color: #ffffff;
 }
 
 .nav-itens>li>a:hover {
-    color: #FFAE34;
+  color: #FFAE34;
 }
+
 /* BANNER */
 
-main {
-}
+main {}
 
 .banner {
-    text-align: center;
+  text-align: center;
   padding-top: -80px;
 
 }
 
 .banner img {
-    width: 100%;
-    height: auto;
-    max-height: 700px;
-    /* background-size: cover; */
-    height: 100vh;
+  width: 100%;
+  height: auto;
+  max-height: 700px;
+  /* background-size: cover; */
+  height: 100vh;
 }
 
 .banner-content {
-    position: absolute;
-    top: 20%;
-    right: 45%;    
-    color: #fff;
-    text-align: center;
+  position: absolute;
+  top: 20%;
+  right: 45%;
+  color: #fff;
+  text-align: center;
 }
 
 .banner-content h1 {
-    font-size: 30px;
-    text-transform: uppercase;
-    font-style: italic;
+  font-size: 30px;
+  text-transform: uppercase;
+  font-style: italic;
 }
 
 .sobre {
   background-image: url(imagens/motor_modelos.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 610px;
+  height: 670px;
 }
 
 .text_services {
@@ -120,146 +121,179 @@ main {
   justify-content: center;
   text-align: center;
 }
+
 .text_services p {
   max-width: 600px;
   text-align: justify;
 }
 
-/* SOBRE */
-.tituloClientes {
-    margin-top: 1000px;
-    color: #ffffff;
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-  }
-  
-  .divMaiorCli {
-    height: 630px;
-    /* height: 80vh; */
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .carrosselTudo {
-    align-items: center;
-    max-width: 1100px;
-    width: 100%;
-    position: relative;
-    margin: auto;
-  }
+.sobreDireita img {
+  border-left: 1000px;
+}
 
-  .carrosselTudo i {
-    top: 50%;
-    height: 50px;
-    width: 50px;
-    cursor: pointer;
-    font-size: 1.25rem;
-    position: absolute;
-    text-align: center;
-    line-height: 50px;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
-    transform: translateY(-50%);
-    transition: transform 0.1s linear;
-  }
-    
-  .carrosselTudo i:last-child {
-    right: -22px;
-  }
-  
-  .carrosselTudo .carousel {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: calc((100% / 3) - 12px);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 16px;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-  }
-    
-  .carousel :where(.card, .img) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .carousel .card {
-    scroll-snap-align: start;
-    height: 342px;
-    list-style: none;
-  
-    cursor: pointer;
-    padding-bottom: 15px;
-    flex-direction: column;
-  }
-  
-  .carousel .card .img {
-    height: 100%;
-    width: 100%;
-  }
-  
-  .card .img img {
-    width: 300px;
-    /* height: 80%; */
-    object-fit: cover;
-  }
-    
-  .carousel .card span {
-    color: #6a6d78;
-    font-size: 1.31rem;
-  }
+/* modelos */
+.divMaiorCli{
+  background-color: rgb(24, 24, 24);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 660px;
+  /* height: 99vh;
+  align-items: center; */
+}
+.tituloClientes{
+  color: #FDF2CD;
+  text-align: center;
+  width: 100px;
+  margin: auto;
+  font-size: 30px;
+  font-weight: bold;
+
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.carrosselTudo {
+  align-items: center;
+  margin-top: 40px;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+.carrosselTudo i {
+  top: 50%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  position: absolute;
+  text-align: center;
+  /* line-height: 500px; */
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+  transform: translateY(-50%);
+  transition: transform 0.1s linear;
+}
+/* .carrosselTudo i:active{
+  transform: translateY(-50%) scale(0.85);
+} */
+.carrosselTudo i:first-child{
+  left: -22px;
+}
+.carrosselTudo i:last-child{
+  right: -22px;
+}
+.carrosselTudo .carousel{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 3) - 12px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 16px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+/* .carousel::-webkit-scrollbar {
+  display: none;
+} */
+/* .carousel.no-transition {
+  scroll-behavior: auto;
+} */
+/* .carousel.dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+} */
+/* .carousel.dragging .card {
+  cursor: grab;
+  user-select: none;
+} */
+.carousel :where(.card, .img) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* .carousel .card {
+  scroll-snap-align: start;
+  height: 342px;
+  list-style: none;
+  cursor: pointer;
+  padding-bottom: 15px;
+  flex-direction: column;
+} */
+.carousel .card .img {
+  height: 100%;
+  width: 400px;
+}
+.card .img img {
+  width: 80%;
+  height: 100%;
+  object-fit: cover;
+}
+/* .carousel .card h2 {
+  font-weight: 500;
+  font-size: 1.56rem;
+  margin: 300px 0 5px;
+} */
+/* .carousel .card span {
+  color: #6A6D78;
+  font-size: 1.31rem;
+} */
 
 /* FOOTER */
 .img-rodape {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .rodape {
-    background-color: rgb(75, 16, 16);
-    display: flex;
-    align-items: center;
-    color: white;
-    justify-content: center;
-    height: 250px;
-    gap: 12%;
-  }
-  
-  .localizacao {
-    color: #fff;
-    text-align: center;
-    font-size: 14px;
-  }
-  
-  .img-rodape {
-    width: 15%;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .centro {
-    height: 100%;
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .direita {
-    display: flex;
-    height: 100%;
-    text-align: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-  .icone-rede {
-    width: 10%;
-    margin: 0 10px; 
-    cursor: pointer;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rodape {
+  background-color: rgb(75, 16, 16);
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: center;
+  height: 250px;
+  gap: 12%;
+}
+
+.localizacao {
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+}
+
+.img-rodape {
+  width: 15%;
+  align-items: center;
+  justify-content: center;
+}
+
+.centro {
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.direita {
+  display: flex;
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.icone-rede {
+  width: 10%;
+  margin: 0 10px;
+  cursor: pointer;
+}
