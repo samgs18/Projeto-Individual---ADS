@@ -73,13 +73,24 @@ body {
   color: #FFAE34;
 }
 
-/* BANNER */
+.inicio {
+  display: flex;
+  justify-content: left;
+  background-image: url(imagens/moto_banner.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 670px;
+  width: 100%;
+  align-items: center;
+  padding: 100px;
+}
 
-main {}
+/* BANNER */
 
 .banner {
   text-align: center;
   padding-top: -80px;
+  align-items: center;
 
 }
 
@@ -92,11 +103,14 @@ main {}
 }
 
 .banner-content {
-  position: absolute;
+  /* position: absolute;
   top: 20%;
-  right: 45%;
+  right: 45%; */
   color: #fff;
   text-align: center;
+  align-items: center;
+  width: 50%;
+
 }
 
 .banner-content h1 {
@@ -106,10 +120,14 @@ main {}
 }
 
 .sobre {
+  display: flex;
+  justify-content: space-around;
   background-image: url(imagens/motor_modelos.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 670px;
+  width: 100%;
+  align-items: center;
 }
 
 .text_services {
