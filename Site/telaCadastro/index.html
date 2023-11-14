@@ -13,7 +13,7 @@
         <form method="get" action=".">
             <div class="cadastro_column1">
                 <label>Nome:
-                    <input name="nome" type="text" id="nome" size="60" /></label><br /> 
+                    <input name="nome" type="text" id="nome" size="60" /></label><br />
                 <label>E-mail:
                     <input name="email" type="text" id="input_email" size="60" /></label><br />
                 <label>Já dirige?
@@ -25,35 +25,24 @@
                 <label>Tem moto?
                     <input name="moto" type="text" id="input_moto" size="60" /></label><br />
                 <label>Senha:
-                    <input name="senha" type="text" id="input_senha" size="60" /></label><br /><br>
+                    <input name="senha" type="password" id="input_senha" size="60" /></label><br /><br>
+                    <!-- <input name="senha" type="text" id="input_senha" size="60" -->
             </div><br>
-            <!-- <label>Cep:
-                <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
-                    onblur="pesquisacep(this.value);" /></label><br />
-            <label>Rua:
-                <input name="rua" type="text" id="rua" size="60" /></label><br />
-            <label>Bairro:
-                <input name="bairro" type="text" id="bairro" size="40" /></label><br />
-            <label>Cidade:
-                <input name="cidade" type="text" id="cidade" size="40" /></label><br />
-            <label>Estado:
-                <input name="uf" type="text" id="uf" size="2" /></label><br /> -->
-            <!-- <label>IBGE:
-            <input name="ibge" type="text" id="ibge" size="8" /></label><br /> -->
-        </form><br>
-        <!-- <input type="text" placeholder="Nome">
-        <input type="text" placeholder="CEP" id="cep"
-        onblur="pesquisacep(this.value);">
-        <input type="text" placeholder="Rua" id="rua">
-        <input type="text" placeholder="Bairro" id="bairro">
-        <input type="text" placeholder="Cidade" id="cidade">
-        <input type="text" placeholder="UF" id="uf"> -->
-        <!-- <input type="text" placeholder="Tem moto?">
-            <input type="text" placeholder="Modelo da moto">
-            <input type="text" placeholder="Email">
-            <input type="password" placeholder="Senha">
-            <input type="password" placeholder="Confirme a senha"><br> -->
-        <button onclick="cadastrar()">Cadastrar</button><br>
+            <div class="cadastro_column3"> 
+                <label>Cep:
+                    <input name="cep" type="text" id="cep" value="" size="60" maxlength="9"
+                        onblur="pesquisacep(this.value);" /></label><br />
+                <label>Rua:
+                    <input name="rua" type="text" id="rua" size="60" /></label><br />
+                <label>Bairro:
+                    <input name="bairro" type="text" id="bairro" size="60" /></label><br />
+                <label>Cidade:
+                    <input name="cidade" type="text" id="cidade" size="100" /></label><br />
+                <label>Estado:
+                    <input name="uf" type="text" id="uf" size="60" /></label><br />
+            </div><br>
+        </form><br><br><br>
+        <button onclick="cadastrar()">Cadastrar</button>
     </div>
 
     <script>
@@ -64,21 +53,19 @@
             var cnh = input_cnh.value;
             var moto = input_moto.value;
             if (
-                email == "" || 
-                senha == "" || 
+                email == "" ||
+                senha == "" ||
                 dirige == "" ||
                 cnh == "" ||
                 moto == "" ||
-                email.indexOf('@') == -1 || 
+                email.indexOf('@') == -1 ||
                 email.indexOf('.') == -1 ||
                 senha.length < 4
-                ) {
-                    alert("Credenciais inválidas!")
-                } else {
-                    alert("Cadastro realizado com sucesso!"); // Substitua pelo seu código de cadastro
-                    window.location.href = "../telaLogin/index.html";
-                // alert("Login realizado com sucesso!"); // Substitua pelo seu código de autenticação
-                // window.location.href = "../dashboard/index.html";
+            ) {
+                alert("Credenciais inválidas!")
+            } else {
+                alert("Cadastro realizado com sucesso!");
+                window.location.href = "../telaLogin/index.html";
             }
         }
 
@@ -88,7 +75,7 @@
             document.getElementById('bairro').value = ("");
             document.getElementById('cidade').value = ("");
             document.getElementById('uf').value = ("");
-            document.getElementById('ibge').value = ("");
+            // document.getElementById('ibge').value = ("");
         }
 
         function meu_callback(conteudo) {
@@ -98,7 +85,7 @@
                 document.getElementById('bairro').value = (conteudo.bairro);
                 document.getElementById('cidade').value = (conteudo.localidade);
                 document.getElementById('uf').value = (conteudo.uf);
-                document.getElementById('ibge').value = (conteudo.ibge);
+                // document.getElementById('ibge').value = (conteudo.ibge);
             } //end if.
             else {
                 //CEP não Encontrado.
@@ -126,7 +113,7 @@
                     document.getElementById('bairro').value = "...";
                     document.getElementById('cidade').value = "...";
                     document.getElementById('uf').value = "...";
-                    document.getElementById('ibge').value = "...";
+                    // document.getElementById('ibge').value = "...";
 
                     //Cria um elemento javascript.
                     var script = document.createElement('script');

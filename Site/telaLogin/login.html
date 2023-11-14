@@ -41,7 +41,9 @@
                 senha == "" || 
                 senha.length < 4
                 ) {
-                    alert("Credenciais inválidas!")
+                    alert("Credenciais inválidas!");
+                    inp_login.value = "";
+                    inp_senha.value = "";
                 } else {
                 alert("Login realizado com sucesso!"); // Substitua pelo seu código de autenticação
                 window.location.href = "../dashboard/index.html";

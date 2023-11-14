@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="css">
+        <canvas id="myChart"></canvas>
+        <canvas id="myChart2"></canvas>
+      </div>
+            
+      <script>
+        const ctx = document.getElementById('myChart');
+        const ctx2 = document.getElementById('myChart2');
+
+      
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [{
+              label: 'temperatura',
+              data: [30, 29, 28, 25, 22, 23],
+              borderWidth: 1,
+              backgroundcolor: 'purple'
+            },
+        {
+            label: 'umidade',
+              data: [80, 82, 80, 85, 80, 83],
+              borderWidth: 1,
+              backgroundColor: '#054f77'
+        }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        new Chart(ctx2, {
+          type: 'bar',
+          data: {
+            labels: ['Pessoas paradas por blitiz', 'Fevereiro'],
+            datasets: [{
+              label: 'Tem CNH',
+              data: [22, 24],
+              borderWidth: 1,
+              backgroundcolor: '#054f77'
+            },
+        {
+            label: 'Não tem CNH',
+              data: [90, 89],
+              borderWidth: 1,
+              backgroundColor: '#054f77',
+        }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+      
+</body>
+</html>
