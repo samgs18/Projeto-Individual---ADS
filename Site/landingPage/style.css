@@ -262,6 +262,23 @@ body {
   color: #6A6D78;
   font-size: 1.31rem;
 } */
+/* DIV GAME */
+.divGame {
+  background-color: rgb(24, 24, 24);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 660px;
+}
+
+.tituloDrive{
+  color: #FDF2CD;
+  text-align: center;
+  width: 500px;
+  margin: auto;
+  font-size: 30px;
+  font-weight: bold;
+}
+
 
 /* FOOTER */
 .img-rodape {

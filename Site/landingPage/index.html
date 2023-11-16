@@ -20,6 +20,8 @@
                 <li><a href="#inicio" class="itensDaNav">INÍCIO</a></li>
                 <li><a href="#sobre" class="itensDaNav">SOBRE</a></li>
                 <li><a href="#modelos" class="itensDaNav">MODELOS</a></li>
+                <li><a href="#drive" class="itensDaNav">DRIVE</a></li>
+                <li><a href="../quiz/index.html" class="itensDaNav">QUIZ</a></li>
                 <li><a href="../telaLogin/login.html" class="itensDaNav">LOGIN</a></li>
             </ul>
             <div class="logo">
@@ -29,17 +31,14 @@
     </nav>
     <main>
         <section id="inicio" class="inicio">
-            <!-- <div class="banner">
-                <img src="./imagens/moto_banner.jpg" alt="banner" class="banner-img">
-                
-                
-            </div> -->
             <div class="banner-content">
                 <h1>Assim como uma moto acelera em direção ao horizonte<br>acelere sua jornada na vida com
                     determinação
                     e
                     paixão<br>e<br>alcance os seus sonhos mais distantes</h1>
-                </div>
+                <br>
+                <a href="../quiz/index.html"><button>Quiz</button></a>
+            </div>
         </section>
         <section id="sobre" class="sobre">
             <div class="text_services">
@@ -52,10 +51,10 @@
                     motociclista aprende a sentir a moto, a compreender seus sinais e a antecipar suas reações, criando
                     um
                     elo inseparável.</p>
-                </div>
-                <img style="width: 450px; height: 300px;" src="imagens/imagemMoto.jpg" alt="">
-                
-            
+            </div>
+            <img style="width: 450px; height: 300px;" src="imagens/imagemMoto.jpg" alt="">
+
+
         </section>
 
         <section id="modelos" class="modelos">
@@ -63,7 +62,7 @@
             <div class="divMaiorCli">
                 <br><br><br><br><br><br><br><br><br>
                 <p class="tituloClientes" style="margin-bottom:50px;">Modelos Famosos</p>
-                <div class="carrosselTudo"> 
+                <div class="carrosselTudo">
                     <ul class="carousel">
                         <li class="card">
                             <div class="img"><img src="./imagens/moto1.png" alt="img"></div>
@@ -79,6 +78,18 @@
             </div>
         </section>
     </main>
+    <section id="drive">
+        <br><br><br><br><br><br><br><br><br>
+        <div class="divGame">
+            <div class="tituloDrive">
+                <button onclick="esquerda()">Mover p/ esquerda</button>
+                <button onclick="direita()">Mover p/ direita</button> <br><br>
+            </div>
+            <img src="./imagens/motoDrive.png" id="imagem"
+                style="width: 400px; min-width: 400px; margin-right: 10px; margin-left: 10px;">
+
+        </div>
+    </section>
 
 
     <footer class="rodape">
@@ -114,3 +125,75 @@
 </body>
 
 </html>
+<script>
+    // var percentual = 0;
+    // function esquerda() {
+    //     percentual -= 1;
+    //     imagem.style.marginLeft = `${100 * percentual}px`
+    //     imagem.style.transform = scaleX(-1);
+    // }
+    // function direita() {
+    //     percentual += 1;
+    //     imagem.style.marginLeft = `${100 * percentual}px`
+    // }
+    //  var percentual = 0;
+    // var imagem = document.getElementById("imagem");
+
+    // function esquerda() {
+    //     percentual -= 1;
+    //     imagem.style.marginLeft = `${100 * percentual}px`;
+    //     imagem.style.transform = "scaleX(-1)";
+    // }
+
+    // function direita() {
+    //     percentual += 1;
+    //     imagem.style.marginLeft = `${100 * percentual}px`;
+    //     imagem.style.transform = "scaleX(1)";
+    // }
+
+    // // Adicione event listeners para chamar as funções quando necessário
+    // document.getElementById("botaoEsquerda").addEventListener("click", esquerda);
+    // document.getElementById("botaoDireita").addEventListener("click", direita);
+    function quiz() {
+        <ul class="nav-itens">
+            <li><a href="../quiz/index.html" class="itensDaNav">QUIZ</a></li>
+        </ul>
+    }
+
+    var percentual = 0;
+    var imagem = document.getElementById("imagem");
+
+    function esquerda() {
+        var limiteDaTela = window.innerWidth; // Largura da tela
+        var larguraDaImagem = imagem.width;
+
+        percentual -= 100;
+
+        // Verifica se ultrapassou o limite da tela para a esquerda
+        if (percentual < -larguraDaImagem) {
+            percentual = limiteDaTela; // Define a posição no lado oposto
+        }
+
+        imagem.style.marginLeft = `${percentual}px`;
+        imagem.style.transform = "scaleX(-1)";
+    }
+
+    function direita() {
+        var limiteDaTela = window.innerWidth; // Largura da tela
+        var larguraDaImagem = imagem.width;
+
+        percentual += 100;
+
+        // Verifica se ultrapassou o limite da tela para a direita
+        if (percentual > limiteDaTela) {
+            percentual = -larguraDaImagem; // Define a posição no lado oposto
+        }
+
+        imagem.style.marginLeft = `${percentual}px`;
+        imagem.style.transform = "scaleX(1)";
+    }
+
+    // Adiciona event listeners para chamar as funções quando necessário
+    document.getElementById("botaoEsquerda").addEventListener("click", esquerda);
+    document.getElementById("botaoDireita").addEventListener("click", direita);
+</script>
