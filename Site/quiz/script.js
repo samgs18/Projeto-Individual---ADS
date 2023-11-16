@@ -80,6 +80,43 @@ function resetAnswerButtons() {
     }
 }
 
+// function selectAnswer(answer) {
+//     const buttons = answerButtonsContainer.children;
+
+//     // Remover a classe 'btn-selected' de todas as opções
+//     for (let i = 0; i < buttons.length; i++) {
+//         buttons[i].classList.remove('btn-selected');
+//     }
+
+//     // Adicionar a classe 'btn-selected' à opção selecionada
+//     const selectedButton = Array.from(buttons).find(button => button.innerText === answer.text);
+//     selectedButton.classList.add('btn-selected');
+
+//     const correct = answer.correct;
+//     if (correct) {
+//         nextButton.classList.remove('hide');
+//     }
+// }
+
+// Restante do código continua o mesmo
+
+// function nextQuestion() {
+//     currentQuestionIndex++;
+//     if (currentQuestionIndex < questions.length) {
+//         showQuestion(questions[currentQuestionIndex]);
+//         nextButton.classList.add('hide');
+//     } else {
+//         // Fim do quiz
+//         alert('Parabéns! Você concluiu o quiz.');
+//     }
+// }
+//
+// Restante do código continua o mesmo
+
+let correctAnswers = 0;
+let incorrectAnswers = 0;
+let userAnswers = [];
+
 function selectAnswer(answer) {
     const buttons = answerButtonsContainer.children;
 
@@ -94,11 +131,51 @@ function selectAnswer(answer) {
 
     const correct = answer.correct;
     if (correct) {
+        correctAnswers++;
+    } else {
+        incorrectAnswers++;
+    }
+
+    // Adicionar a resposta do usuário ao registro
+    userAnswers.push({
+        question: questions[currentQuestionIndex].question,
+        userAnswer: answer.text,
+        correctAnswer: questions[currentQuestionIndex].answers.find(a => a.correct).text
+    });
+
+    if (correct) {
         nextButton.classList.remove('hide');
     }
 }
 
-// Restante do código continua o mesmo
+function showResults() {
+    questionContainer.innerText = 'Resultados do Quiz';
+
+    resetAnswerButtons();
+
+    const resultsContainer = document.createElement('div');
+    resultsContainer.classList.add('results-container');
+    
+    userAnswers.forEach(answer => {
+        const resultItem = document.createElement('p');
+        resultItem.classList.add('result-item');
+
+        if (answer.userAnswer === answer.correctAnswer) {
+            resultItem.classList.add('correct');
+            resultItem.innerText = `✅ ${answer.question} - Sua resposta: ${answer.userAnswer}`;
+        } else {
+            resultItem.classList.add('incorrect');
+            resultItem.innerText = `❌ ${answer.question} - Sua resposta: ${answer.userAnswer}. Resposta correta: ${answer.correctAnswer}`;
+        }
+
+        resultsContainer.appendChild(resultItem);
+    });
+
+    document.getElementById('quiz-container').appendChild(resultsContainer);
+
+    // Ocultar o botão "Próxima" no final do quiz
+    nextButton.classList.add('hide');
+}
 
 function nextQuestion() {
     currentQuestionIndex++;
@@ -107,9 +184,11 @@ function nextQuestion() {
         nextButton.classList.add('hide');
     } else {
         // Fim do quiz
-        alert('Parabéns! Você concluiu o quiz.');
+        showResults();
     }
 }
+
+// Restante do código continua o mesmo
 
 // Iniciar o quiz ao carregar a página
 startQuiz();

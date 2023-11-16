@@ -267,7 +267,8 @@ body {
   background-color: rgb(24, 24, 24);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 660px;
+  background-image: url(imagens/rua3.jpeg);
+  height: 600px;
 }
 
 .tituloDrive{
