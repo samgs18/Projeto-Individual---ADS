@@ -185,8 +185,11 @@ function nextQuestion() {
     } else {
         // Fim do quiz
         showResults();
+        const grafico = document.getElementById("graficos");
+        grafico.style.display = "block";
     }
 }
+
 
 // Restante do código continua o mesmo
 

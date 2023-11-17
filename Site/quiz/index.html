@@ -14,12 +14,18 @@
     <div class="login-container">
         <h2>QUIZ SOBRE RODAS</h2>
         <div id="quiz-container">
-            <div id="question-container">
-                <p id="question"></p>
+            <div id="graficos" style="display: none;">
+                <canvas id="myChart" style="background-color: black;"></canvas>
             </div>
-            <div id="answer-buttons" class="btn-container">
+            <div class="kpi">
+                <div id="question-container">
+
+                    <p id="question"></p>
+                </div>
+                <div id="answer-buttons" class="btn-container">
+                </div>
+                <button id="next-button" class="btn" onclick="nextQuestion()">Próxima</button>
             </div>
-            <button id="next-button" class="btn" onclick="nextQuestion()">Próxima</button>
         </div>
     </div>
     <!-- Adicione esta div para exibir as respostas corretas e incorretas -->
@@ -28,3 +34,33 @@
 </body>
 
 </html>
+<script>
+    const ctx = document.getElementById('myChart');
+
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [{
+                label: 'temperatura',
+                data: [30, 29, 28, 25, 22, 23],
+                borderWidth: 1,
+                backgroundcolor: 'purple'
+            },
+            {
+                label: 'umidade',
+                data: [80, 82, 80, 85, 80, 83],
+                borderWidth: 1,
+                backgroundColor: '#054f77'
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
