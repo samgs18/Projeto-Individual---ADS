@@ -80,37 +80,6 @@ function resetAnswerButtons() {
     }
 }
 
-// function selectAnswer(answer) {
-//     const buttons = answerButtonsContainer.children;
-
-//     // Remover a classe 'btn-selected' de todas as opções
-//     for (let i = 0; i < buttons.length; i++) {
-//         buttons[i].classList.remove('btn-selected');
-//     }
-
-//     // Adicionar a classe 'btn-selected' à opção selecionada
-//     const selectedButton = Array.from(buttons).find(button => button.innerText === answer.text);
-//     selectedButton.classList.add('btn-selected');
-
-//     const correct = answer.correct;
-//     if (correct) {
-//         nextButton.classList.remove('hide');
-//     }
-// }
-
-// Restante do código continua o mesmo
-
-// function nextQuestion() {
-//     currentQuestionIndex++;
-//     if (currentQuestionIndex < questions.length) {
-//         showQuestion(questions[currentQuestionIndex]);
-//         nextButton.classList.add('hide');
-//     } else {
-//         // Fim do quiz
-//         alert('Parabéns! Você concluiu o quiz.');
-//     }
-// }
-//
 // Restante do código continua o mesmo
 
 let correctAnswers = 0;
