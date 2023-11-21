@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #imagem {
+            transition: transform 0.5s ease-in-out;
+            position: absolute; /* Adiciona position: absolute para a imagem */
+        }
+    </style>
+    <title>Mover Imagem com JavaScript</title>
+</head>
+<body>
+
+<img id="imagem" src="imagens/motoDrive.png" alt="Imagem">
+
+<script>
+    var percentual = 0;
+    var imagem = document.getElementById("imagem");
+
+    function mover(direction) {
+        var limiteDaTela = window.innerWidth; // Largura da tela
+
+        // Verifica se ultrapassou o limite da tela
+        if (percentual > limiteDaTela) {
+            percentual = -imagem.width; // Define a posição no lado oposto
+        } else if (percentual < -imagem.width) {
+            percentual = limiteDaTela; // Define a posição no lado oposto
+        }
+
+        // Atualiza a posição da imagem
+        imagem.style.left = `${percentual}px`;
+    }
+
+    function esquerda() {
+        percentual -= 10;
+        mover();
+        imagem.style.transform = "scaleX(-1)";
+    }
+
+    function direita() {
+        percentual += 10;
+        mover();
+        imagem.style.transform = "scaleX(1)";
+    }
+
+    // Adiciona event listeners para chamar as funções quando necessário
+    document.getElementById("botaoEsquerda").addEventListener("click", esquerda);
+    document.getElementById("botaoDireita").addEventListener("click", direita);
+</script>
+
+<!-- Adicione botões para chamar as funções -->
+<button id="botaoEsquerda">Mover para a Esquerda</button>
+<button id="botaoDireita">Mover para a Direita</button>
+
+</body>
+</html>
