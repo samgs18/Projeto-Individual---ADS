@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="../public/css/dash.css">
+</head>
+
+<body>
+  <div class="login-container">
+    <h2>Análise Quiz</h2>
+    <canvas id="myChart"></canvas>
+    <script>
+      const ctx = document.getElementById('myChart');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Acertos', 'Erros'],
+          datasets: [{
+            label: 'Acertos',
+            data: [3, 2],
+            borderWidth: 1,
+            backgroundcolor: '#054f77'
+          },]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    </script>
+</body>
+
+</html>

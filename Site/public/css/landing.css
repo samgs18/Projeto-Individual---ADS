@@ -1,0 +1,308 @@
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bd0404;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 0, 0);
+  border-radius: 10px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "raleway";
+  overflow-x: hidden;
+  background-color: rgb(24, 24, 24);
+}
+
+/* HEADER */
+.nav {
+  background-color: rgb(75, 16, 16);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #ffffff;
+  margin: 0;
+  position: fixed;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  width: 100%;
+  transition: 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.logo {
+  color: #fff;
+  font-size: 20px;
+}
+
+.logo-img {
+  width: 40px;
+  height: auto;
+  vertical-align: middle;
+}
+
+.nav-itens {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  height: 50%;
+}
+
+.nav-itens>li>a {
+  padding-left: 50px;
+  color: #ffffff;
+}
+
+.nav-itens>li>a:hover {
+  color: #FFAE34;
+}
+
+/* BANNER */
+
+.inicio {
+  display: flex;
+  justify-content: left;
+  background-image: url(../imagens/moto_banner.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 670px;
+  width: 100%;
+  align-items: center;
+  padding: 100px;
+}
+
+.banner {
+  text-align: center;
+  padding-top: -80px;
+  align-items: center;
+
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  max-height: 700px;
+  height: 100vh;
+}
+
+.banner-content {
+  color: #fff;
+  text-align: center;
+  align-items: center;
+  width: 50%;
+}
+
+.banner-content h1 {
+  font-size: 30px;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.btn {
+  margin-top: 10px;
+  padding: 20px;
+  background-color: rgb(75, 16, 16);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* SOBRE */
+
+.sobre {
+  display: flex;
+  justify-content: space-around;
+  background-image: url(../imagens/motor_modelos.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 670px;
+  width: 100%;
+  align-items: center;
+}
+
+.text_services {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.text_services p {
+  max-width: 600px;
+  text-align: justify;
+}
+
+.sobreDireita img {
+  border-left: 1000px;
+}
+
+/* MODELOS */
+
+.divMaiorCli{
+  background-color: rgb(24, 24, 24);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 660px;
+}
+.tituloClientes{
+  color: #FDF2CD;
+  text-align: center;
+  width: 100px;
+  margin: auto;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.carrosselTudo {
+  align-items: center;
+  margin-top: 40px;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+.carrosselTudo i {
+  top: 50%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  position: absolute;
+  text-align: center;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+  transform: translateY(-50%);
+  transition: transform 0.1s linear;
+}
+.carrosselTudo i:first-child{
+  left: -22px;
+}
+.carrosselTudo i:last-child{
+  right: -22px;
+}
+.carrosselTudo .carousel{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 3) - 12px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 16px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.carousel :where(.card, .img) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel .card .img {
+  height: 100%;
+  width: 400px;
+}
+
+.card .img img {
+  width: 80%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* DRIVE */
+
+.divGame {
+  background-color: rgb(24, 24, 24);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../imagens/rua3.jpeg);
+  height: 600px;
+}
+
+.tituloDrive{
+  color: #FDF2CD;
+  text-align: center;
+  width: 500px;
+  margin: auto;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* FOOTER */
+
+.img-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rodape {
+  background-color: rgb(75, 16, 16);
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: center;
+  height: 250px;
+  gap: 12%;
+}
+
+.localizacao {
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+}
+
+.img-rodape {
+  width: 15%;
+  align-items: center;
+  justify-content: center;
+}
+
+.centro {
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.direita {
+  display: flex;
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.icone-rede {
+  width: 10%;
+  margin: 0 10px;
+  cursor: pointer;
+}

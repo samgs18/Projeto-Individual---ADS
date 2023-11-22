@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam's BikeMotors</title>
+    <link rel="icon" href="../landingPage/imagens/logo_moto.png" type="image/png">
+    <link rel="stylesheet" href="../public/css/landing.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav">
+            <div class="logo">
+                <img style="width: 90px;" src="./imagens/logo_moto.png" alt="logo" class="logo-img">
+            </div>
+            <ul class="nav-itens">
+                <li><a href="#inicio" class="itensDaNav">INÍCIO</a></li>
+                <li><a href="#sobre" class="itensDaNav">SOBRE</a></li>
+                <li><a href="#modelos" class="itensDaNav">MODELOS</a></li>
+                <li><a href="#drive" class="itensDaNav">DRIVE</a></li>
+                <li><a href="../public/quiz.html" class="itensDaNav">QUIZ</a></li>
+                <li><a href="../public/login.html" class="itensDaNav">LOGIN</a></li>
+            </ul>
+            <div class="logo">
+                <img style="width: 90px;" src="../public/imagens/logo_moto.png" alt="logo" class="logo-img">
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section id="inicio" class="inicio">
+            <div class="banner-content">
+                <h1>Assim como uma moto acelera em direção ao horizonte<br>acelere sua jornada na vida com
+                    determinação
+                    e
+                    paixão<br>e<br>alcance os seus sonhos mais distantes</h1>
+                <br>
+                <a href="../public/quiz.html"><button class="btn">Quiz</button></a>
+            </div>
+        </section>
+        <section id="sobre" class="sobre">
+            <div class="text_services">
+                <h1 style="color: white; font-size: 50px;">Paixão sobre rodas</h1>
+                <p style="color: white; font-size: 30px;"> <br>
+                    A relação entre um motociclista e sua moto é verdadeiramente única. Há uma conexão visceral, quase
+                    espiritual, que se desenvolve à medida que o piloto se familiariza com a máquina. Cada toque no
+                    acelerador, cada inclinação em uma curva e cada frenagem se tornam uma extensão do próprio corpo. O
+                    motociclista aprende a sentir a moto, a compreender seus sinais e a antecipar suas reações, criando
+                    um
+                    elo inseparável.</p>
+            </div>
+            <img style="width: 450px; height: 300px;" src="../public/imagens/imagemMoto.jpg" alt="">
+
+
+        </section>
+
+        <section id="modelos" class="modelos">
+
+            <div class="divMaiorCli">
+                <br><br><br><br><br><br><br><br><br>
+                <p class="tituloClientes" style="margin-bottom:50px;">Modelos Famosos</p>
+                <div class="carrosselTudo">
+                    <ul class="carousel">
+                        <li class="card">
+                            <div class="img"><img src="../public/imagens/moto1.png" alt="img"></div>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="../public/imagens/moto2.png" alt="img"></div>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="../public/imagens/moto3.png" alt="img"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <section id="drive">
+        <br><br><br><br><br>
+        <div class="divGame">
+            <div class="tituloDrive">
+                <button class="btn" onclick="esquerda()">Mover p/ esquerda</button>
+                <button class="btn" onclick="direita()">Mover p/ direita</button> <br><br>
+            </div>
+            <img src="../public/imagens/motoDrive.png" id="imagem"
+                style="width: 400px; min-width: 400px; margin-right: 10px; margin-left: 10px;">
+
+        </div>
+    </section>
+
+
+    <footer class="rodape">
+        <div class="localização">
+            <address>
+                <b>CONTATO:</b><br>
+                Email: <a href="mailto:samuel.santos@sptech.school">samuel.santos@sptech.school</a><br>
+                Telefone: (11) 98812-3957 <br><br>
+                <b>LOCALIZAÇÃO:</b><br>
+                Rua Arturo Vital, 230 - Conj. José Bonifácio<br>
+                São Paulo - SP, 08250-540
+            </address>
+        </div>
+
+        <div class="centro">
+            <img src="../public/imagens/logo_moto.png" alt="logo" class="img-rodape">
+            <p>&copy; 2023 Sam's BikeMotors</p>
+        </div>
+
+        <div class="direita">
+            <span>MINHAS REDES SOCIAIS</span><br>
+            <div class="imgs-redes"><br>
+                <img src="../public/imagens/wppFooter.png" alt="wpp logo" class="icone-rede" onclick="location.href='#banner'">
+                <img src="../public/imagens/instaFooter.png" alt="insta logo" class="icone-rede"
+                    onclick="location.href='#banner'">
+                <img src="../public/imagens/linkedln-footer.png" alt="link-logo" class="icone-rede"
+                    onclick="location.href='#banner'">
+
+
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+<script>
+    var percentual = 0;
+    var imagem = document.getElementById("imagem");
+
+    function esquerda() {
+        var limiteDaTela = window.innerWidth;
+        var larguraDaImagem = imagem.width;
+        percentual -= 100;
+        if (percentual < -larguraDaImagem) {
+            percentual = limiteDaTela; 
+        }
+        imagem.style.marginLeft = `${percentual}px`;
+        imagem.style.transform = "scaleX(-1)";
+    }
+    
+    function direita() {
+        var limiteDaTela = window.innerWidth;
+        var larguraDaImagem = imagem.width;
+        percentual += 100;
+        if (percentual > limiteDaTela) {
+            percentual = -larguraDaImagem;
+        }
+        imagem.style.marginLeft = `${percentual}px`;
+        imagem.style.transform = "scaleX(1)";
+    }
+</script>

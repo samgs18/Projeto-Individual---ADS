@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/quiz.css">
+    <link rel="icon" href="../public/imagens/logo_moto.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Quiz</title>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>QUIZ SOBRE RODAS</h2>
+        <div id="quiz-container">
+            <div id="graficos" style="display: none;">
+                <canvas id="myChart2" style="background-color: white;"></canvas>
+            </div>
+            <div class="kpi">
+                <div id="question-container">
+
+                    <p id="question"></p>
+                </div>
+                <div id="answer-buttons" class="btn-container">
+                </div>
+                <div id="botao1" style="display: block;">
+                    <button id="next-button" class="btn" onclick="nextQuestion()">Próxima</button>
+                </div>
+                <div id="botao" style="display: none;">
+                    <a href="../public/landing.html"><button class="btn">Voltar</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="quiz.js"></script>
+</body>
+
+</html>
+<script>
+    var questoesCertas = "";
+    var questoesErradas = "";
+    const ctx2 = document.getElementById('myChart2');
+    new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['Acertos', 'Erros'],
+            datasets: [{
+                label: 'Acertos',
+                data: [2, 3],
+                borderWidth: 1,
+                backgroundcolor: '#054f77'
+            },]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
