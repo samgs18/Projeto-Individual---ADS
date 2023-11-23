@@ -5,30 +5,50 @@
 /*
 comandos para mysql - banco local - ambiente de desenvolvimento
 */
+drop database if exists projetoIndividual;
+
+create database if not exists projetoIndividual; 
+
+use projetoIndividual;
+
 create table Relatorio (
 idRelatorio int primary key auto_increment,
-CNH char(3),
-dirige char(3),
-possuiMoto char(3)
+CNH char(1),
+dirige char(1),
+possuiMoto char(1),
+constraint chkCnh check (CNH IN ('s', 'n')),
+constraint chkDIReck check(dirige IN ('s', 'n')),
+constraint chkPM check (possuiMoto IN ('s', 'n'))
+);
+
+create table Endereco (
+idEndereco int primary key auto_increment,
+Cep char(8),
+Rua varchar(45),
+Bairro varchar (45),
+Cidade varchar(45)
+);
+
+create table Quiz (
+idQuiz int primary key auto_increment,
+Pergunta1 varchar(45),
+Pergunta2 varchar(45),
+Pergunta3 varchar(45),
+Pergunta4 varchar(45),
+Pergunta5 varchar(45)
 );
 
 create table Cliente (
 idCliente int primary key auto_increment,
-fkEndereço int,
+fkEndereco int,
 fkRelatorio int,
+fkQuiz int,
 Nome varchar(45),
 Email varchar(45),
 Senha varchar(45),
-foreign key (fkEndereço) references Endereço(idEndereco),
-foreign key (fkRelatorio) references Relatorio(idRelatorio)  
-);
-
-create table Endereço (
-idEndereco int primary key auto_increment,
-CEP varchar(10),
-Rua varchar(45),
-Bairro varchar (45),
-Cidade varchar(45)
+foreign key (fkEndereco) references Endereco(idEndereco),
+foreign key (fkRelatorio) references Relatorio(idRelatorio),
+foreign key (fkQuiz) references Quiz(idQuiz) 
 );
 -- insert into empresa (razao_social, cnpj) values ('Empresa 1', '00000000000000');
 -- insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
@@ -85,12 +105,12 @@ Cidade varchar(45)
 -- com permissão de insert + update + delete + select
 -- */
 
--- CREATE USER [usuarioParaAPIWebDataViz_datawriter_datareader]
--- WITH PASSWORD = '#Gf_senhaParaAPIWebDataViz',
--- DEFAULT_SCHEMA = dbo;
+CREATE USER [usuarioParaAPIWebDataViz_datawriter_datareader]
+WITH PASSWORD = '#Gf_senhaParaAPIWebDataViz',
+DEFAULT_SCHEMA = dbo;
 
--- EXEC sys.sp_addrolemember @rolename = N'db_datawriter',
--- @membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
+EXEC sys.sp_addrolemember @rolename = N'db_datawriter',
+@membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
 
--- EXEC sys.sp_addrolemember @rolename = N'db_datareader',
--- @membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
+EXEC sys.sp_addrolemember @rolename = N'db_datareader',
+@membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';

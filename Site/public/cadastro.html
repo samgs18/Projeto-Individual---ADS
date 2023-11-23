@@ -14,7 +14,7 @@
         <form method="get" action=".">
             <div class="cadastro_column1">
                 <label>Nome:
-                    <input name="nome" type="text" id="nome" size="60" /></label><br />
+                    <input name="nome" type="text" id="input_nome" size="60" /></label><br />
                 <label>E-mail:
                     <input name="email" type="text" id="input_email" size="60" /></label><br />
                 <label>Já dirige?
@@ -28,7 +28,7 @@
                 <label>Senha:
                     <input name="senha" type="password" id="input_senha" size="60" /></label><br /><br>
             </div><br>
-            <div class="cadastro_column3"> 
+            <div class="cadastro_column3">
                 <label>Cep:
                     <input name="cep" type="text" id="cep" value="" size="60" maxlength="9"
                         onblur="pesquisacep(this.value);" /></label><br />
@@ -45,64 +45,79 @@
 
     <script>
         function cadastrar() {
-            var email = input_email.value;
-            var senha = input_senha.value;
-            var dirige = input_dirige.value;
-            var cnh = input_cnh.value;
-            var moto = input_moto.value;
+            var emailVar = input_email.value;
+            var nomeVar = input_nome.value;
+            var senhaVar = input_senha.value;
+            var dirigeVar = input_dirige.value;
+            var cnhVar = input_cnh.value;
+            var motoVar = input_moto.value;
+            var cepVar = cep.value;
+            var ruaVar = rua.value;
+            var bairroVar = bairro.value;
+            var cidadeVar = cidade.value;
             if (
-                email == "" ||
-                senha == "" ||
-                dirige == "" ||
-                cnh == "" ||
-                moto == "" ||
-                email.indexOf('@') == -1 ||
-                email.indexOf('.') == -1 ||
-                senha.length < 4
+                emailVar == "" ||
+                nomeVar == "" ||
+                senhaVar == "" ||
+                dirigeVar == "" ||
+                cnhVar == "" ||
+                motoVar == "" ||
+                cepVar == "" ||
+                ruaVar == "" ||
+                bairroVar == "" ||
+                cidadeVar == "" ||
+                emailVar.indexOf('@') == -1 ||
+                emailVar.indexOf('.') == -1 ||
+                senhaVar.length < 4
             ) {
                 alert("Credenciais inválidas!")
             } else {
                 alert("Cadastro realizado com sucesso!");
-                window.location.href = "./login.html";
-
                 fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar,
-        empresaServer: empresaVar
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        // crie um atributo que recebe o valor recuperado aqui
+                        // Agora vá para o arquivo routes/usuario.js
+                        nomeServer: nomeVar,
+                        emailServer: emailVar,
+                        senhaServer: senhaVar,
+                        dirigeServer: dirigeVar,
+                        cnhServer: cnhVar,
+                        motoServer: motoVar,
+                        cepServer: cepVar,
+                        ruaServer: ruaVar,
+                        bairroServer: bairroVar,
+                        cidadeServer: cidadeVar
+                    }),
+                })
+                    .then(function (resposta) {
+                        console.log("resposta: ", resposta);
 
-        if (resposta.ok) {
-          cardErro.style.display = "block";
+                        if (resposta.ok) {
+                            cardErro.style.display = "block";
 
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                            mensagem_erro.innerHTML =
+                                "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
+                            setTimeout(() => {
+                                window.location = "login.html";
+                            }, "2000");
 
-          limparFormulario();
-          finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
-      });
+                            limparFormulario();
+                            finalizarAguardar();
+                        } else {
+                            throw "Houve um erro ao tentar realizar o cadastro!";
+                        }
+                    })
+                    .catch(function (resposta) {
+                        console.log(`#ERRO: ${resposta}`);
+                        finalizarAguardar();
+                    });
 
+                window.location.href = "./login.html";
             }
         }
 
