@@ -4,7 +4,7 @@
 <head>
     <title>Tela de Cadastro</title>
     <link rel="stylesheet" href="./css/cadastro.css">
-    <link rel="icon" href="../public/imagens/logo_moto.png" type="image/png">
+    <link rel="icon" href="./imagens/logo_moto.png" type="image/png">
 
 </head>
 
@@ -48,77 +48,167 @@
             var emailVar = input_email.value;
             var nomeVar = input_nome.value;
             var senhaVar = input_senha.value;
-            var dirigeVar = input_dirige.value;
-            var cnhVar = input_cnh.value;
-            var motoVar = input_moto.value;
-            var cepVar = cep.value;
-            var ruaVar = rua.value;
-            var bairroVar = bairro.value;
-            var cidadeVar = cidade.value;
+            // var dirigeVar = input_dirige.value;
+            // var cnhVar = input_cnh.value;
+            // var motoVar = input_moto.value;
+            // var cepVar = cep.value;
+            // var ruaVar = rua.value;
+            // var bairroVar = bairro.value;
+            // var cidadeVar = cidade.value;
             if (
                 emailVar == "" ||
                 nomeVar == "" ||
                 senhaVar == "" ||
-                dirigeVar == "" ||
-                cnhVar == "" ||
-                motoVar == "" ||
-                cepVar == "" ||
-                ruaVar == "" ||
-                bairroVar == "" ||
-                cidadeVar == "" ||
+                // dirigeVar == "" ||
+                // cnhVar == "" ||
+                // motoVar == "" ||
+                // cepVar == "" ||
+                // ruaVar == "" ||
+                // bairroVar == "" ||
+                // cidadeVar == "" ||
                 emailVar.indexOf('@') == -1 ||
                 emailVar.indexOf('.') == -1 ||
                 senhaVar.length < 4
             ) {
                 alert("Credenciais inválidas!")
+                finalizarAguardar();
+                return false;
             } else {
                 alert("Cadastro realizado com sucesso!");
-                fetch("/usuarios/cadastrar", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        // crie um atributo que recebe o valor recuperado aqui
-                        // Agora vá para o arquivo routes/usuario.js
-                        nomeServer: nomeVar,
-                        emailServer: emailVar,
-                        senhaServer: senhaVar,
-                        dirigeServer: dirigeVar,
-                        cnhServer: cnhVar,
-                        motoServer: motoVar,
-                        cepServer: cepVar,
-                        ruaServer: ruaVar,
-                        bairroServer: bairroVar,
-                        cidadeServer: cidadeVar
-                    }),
-                })
-                    .then(function (resposta) {
-                        console.log("resposta: ", resposta);
-
-                        if (resposta.ok) {
-                            cardErro.style.display = "block";
-
-                            mensagem_erro.innerHTML =
-                                "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                            setTimeout(() => {
-                                window.location = "login.html";
-                            }, "2000");
-
-                            limparFormulario();
-                            finalizarAguardar();
-                        } else {
-                            throw "Houve um erro ao tentar realizar o cadastro!";
-                        }
-                    })
-                    .catch(function (resposta) {
-                        console.log(`#ERRO: ${resposta}`);
-                        finalizarAguardar();
-                    });
-
-                window.location.href = "./login.html";
             }
+            cadastrarEndereco();
+            cadastrarRelatorio();
+            // Enviando o valor da nova input
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nomeVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        cardErro.style.display = "block";
+
+                        mensagem_erro.innerHTML =
+                            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                        setTimeout(() => {
+                            window.location = "login.html";
+                        }, "2000");
+
+                        limparFormulario();
+                        finalizarAguardar();
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    finalizarAguardar();
+                });
+
+            window.location.href = "./login.html";
+        }
+
+        function cadastrarRelatorio() {
+            var dirigeVar = input_dirige.value;
+            var cnhVar = input_cnh.value;
+            var motoVar = input_moto.value;
+
+            // Enviando o valor da nova input
+            fetch("/usuarios/cadastrarRelatorio", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    dirigeServer: dirigeVar,
+                    cnhServer: cnhVar,
+                    motoServer: motoVar
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        cardErro.style.display = "block";
+
+                        mensagem_erro.innerHTML =
+                            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                        setTimeout(() => {
+                            window.location = "login.html";
+                        }, "2000");
+
+                        limparFormulario();
+                        finalizarAguardar();
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    finalizarAguardar();
+                });
+
+        }
+
+        function cadastrarEndereco() {
+            var cepVar = cep.value;
+            var ruaVar = rua.value;
+            var bairroVar = bairro.value;
+            var cidadeVar = cidade.value;
+
+            // Enviando o valor da nova input
+            fetch("/usuarios/cadastrarEndereco", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    cepServer: cepVar,
+                    ruaServer: ruaVar,
+                    bairroServer: bairroVar,
+                    cidadeServer: cidadeVar
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        cardErro.style.display = "block";
+
+                        mensagem_erro.innerHTML =
+                            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                        setTimeout(() => {
+                            window.location = "login.html";
+                        }, "2000");
+
+                        limparFormulario();
+                        finalizarAguardar();
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    finalizarAguardar();
+                });
+
         }
 
         function limpa_formulário_cep() {
