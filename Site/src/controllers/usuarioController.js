@@ -1,5 +1,7 @@
 var usuarioModel = require("../models/usuarioModel");
 var aquarioModel = require("../models/aquarioModel");
+var idEndereco = 0;
+var idRelatorio = 0;
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -156,9 +158,37 @@ function cadastrarRelatorio(req, res) {
                 );
             }
         }
+
+        function buscaridEndereco(cep, rua, bairro, cidade) { // Definição da função para buscar o id do usuário com base no email e senha
+
+            usuarioModel.buscaridEndereco(cep).then( // Chama a função para buscar o id do usuário com base no email e senha fornecidos
+                function (resultado) { // Verificação de sucesso da chamada
+                    
+                    idEndereco = resultado[0].idEndereco; // Atribui o id do usuário ao idUsuario
+                    // cadastrarexperiencia(tempo, grau, exp); // Chama a função para cadastrar a experiência com o tempo, grau e experiência fornecidos
+        
+                }
+            )
+        }
+
+        function buscaridRelatorio(cnh, moto, dirige) { // Definição da função para buscar o id do usuário com base no email e senha
+
+            usuarioModel.buscaridRelatorio(cnh).then( // Chama a função para buscar o id do usuário com base no email e senha fornecidos
+                function (resultado) { // Verificação de sucesso da chamada
+                    
+                    idRelatorio = resultado[0].idRelatorio; // Atribui o id do usuário ao idUsuario
+                    // cadastrarexperiencia(tempo, grau, exp); // Chama a função para cadastrar a experiência com o tempo, grau e experiência fornecidos
+        
+                }
+            )
+        }
+        
+
         module.exports = {
             autenticar,
             cadastrar,
             cadastrarEndereco,
-            cadastrarRelatorio
+            cadastrarRelatorio,
+            buscaridEndereco,
+            buscaridRelatorio
         }

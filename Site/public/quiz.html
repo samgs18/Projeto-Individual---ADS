@@ -38,15 +38,16 @@
 
 </html>
 <script>
-    var questoesCertas = "";
-    var questoesErradas = "";
+    const questoesCertas = 0;
+    const questoesErradas = 0;
+
     const ctx2 = document.getElementById('myChart2');
     new Chart(ctx2, {
         type: 'bar',
         data: {
             labels: ['Acertos', 'Erros'],
             datasets: [{
-                label: 'Acertos',
+                label: 'Respostas',
                 data: [2, 3],
                 borderWidth: 1,
                 backgroundcolor: '#054f77'

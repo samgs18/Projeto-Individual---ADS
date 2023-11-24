@@ -77,9 +77,9 @@ function resetAnswerButtons() {
     }
 }
 
-let correctAnswers = 0;
-let incorrectAnswers = 0;
-let userAnswers = [];
+var correctAnswers = 0;
+var incorrectAnswers = 0;
+var userAnswers = [];
 
 function selectAnswer(answer) {
     const buttons = answerButtonsContainer.children;
