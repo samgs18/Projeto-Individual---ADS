@@ -59,6 +59,7 @@ function cadastrar(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var idRelatorio = req.body.fkRelatorio;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -70,7 +71,7 @@ function cadastrar(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha)
+        usuarioModel.cadastrar(idEndereco, idRelatorio, nome, email, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -84,17 +85,17 @@ function cadastrar(req, res) {
                     );
                     res.status(500).json(erro.sqlMessage);
                 }
-                );
-            }
-        }
+            );
+    }
+}
 function cadastrarEndereco(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    
+
     var cep = req.body.cepServer;
     var rua = req.body.ruaServer;
     var bairro = req.body.bairroServer;
     var cidade = req.body.cidadeServer;
- 
+
     // Faça as validações dos valores
     if (cep == undefined) {
         res.status(400).send("Seu cep está undefined!");
@@ -121,15 +122,16 @@ function cadastrarEndereco(req, res) {
                     );
                     res.status(500).json(erro.sqlMessage);
                 }
-                );
-            }
-        }
+            );
+    }
+}
 function cadastrarRelatorio(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
     var cnh = req.body.cnhServer;
     var moto = req.body.motoServer;
     var dirige = req.body.dirigeServer;
+
 
     // Faça as validações dos valores
     if (moto == undefined) {
@@ -142,6 +144,7 @@ function cadastrarRelatorio(req, res) {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrarRelatorio(cnh, moto, dirige)
+        // Aqui vc vai receber aquele resultado, e aqui vc chama o id e coloca em algum lugar
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -155,40 +158,52 @@ function cadastrarRelatorio(req, res) {
                     );
                     res.status(500).json(erro.sqlMessage);
                 }
-                );
-            }
+            );
+    }
+}
+
+function buscaridEndereco(cep) { // Definição da função para buscar o id do usuário com base no email e senha
+
+    usuarioModel.buscaridEndereco(cep)
+    .then( // Chama a função para buscar o id do usuário com base no email e senha fornecidos
+        function (resultado) {
+            console.log(resultado) // Verificação de sucesso da chamada
+            res.json(
+                {
+                    idEndereco: resultado[0].idEndereco // Atribui o id do usuário ao idUsuario
+                });
+            // cadastrarexperiencia(tempo, grau, exp); // Chama a função para cadastrar a experiência com o tempo, grau e experiência fornecidos
+
         }
-
-        function buscaridEndereco(cep, rua, bairro, cidade) { // Definição da função para buscar o id do usuário com base no email e senha
-
-            usuarioModel.buscaridEndereco(cep).then( // Chama a função para buscar o id do usuário com base no email e senha fornecidos
-                function (resultado) { // Verificação de sucesso da chamada
-                    
-                    idEndereco = resultado[0].idEndereco; // Atribui o id do usuário ao idUsuario
-                    // cadastrarexperiencia(tempo, grau, exp); // Chama a função para cadastrar a experiência com o tempo, grau e experiência fornecidos
-        
-                }
-            )
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
         }
+    );
+}
+function buscaridRelatorio(cnh) { // Definição da função para buscar o id do usuário com base no email e senha
 
-        function buscaridRelatorio(cnh, moto, dirige) { // Definição da função para buscar o id do usuário com base no email e senha
+    usuarioModel.buscaridRelatorio(cnh).then( // Chama a função para buscar o id do usuário com base no email e senha fornecidos
+        function (resultado) { // Verificação de sucesso da chamada
+            console.log(resultado)
+            resultado.json(
+                {
+                    idRelatorio: resultado[0].idRelatorio // Atribui o id do usuário ao idUsuario
+                });
+            // cadastrarexperiencia(tempo, grau, exp); // Chama a função para cadastrar a experiência com o tempo, grau e experiência fornecidos
 
-            usuarioModel.buscaridRelatorio(cnh).then( // Chama a função para buscar o id do usuário com base no email e senha fornecidos
-                function (resultado) { // Verificação de sucesso da chamada
-                    
-                    idRelatorio = resultado[0].idRelatorio; // Atribui o id do usuário ao idUsuario
-                    // cadastrarexperiencia(tempo, grau, exp); // Chama a função para cadastrar a experiência com o tempo, grau e experiência fornecidos
-        
-                }
-            )
         }
-        
+    )
+}
 
-        module.exports = {
-            autenticar,
-            cadastrar,
-            cadastrarEndereco,
-            cadastrarRelatorio,
-            buscaridEndereco,
-            buscaridRelatorio
-        }
+
+module.exports = {
+    autenticar,
+    cadastrar,
+    cadastrarEndereco,
+    cadastrarRelatorio,
+    buscaridEndereco,
+    buscaridRelatorio
+}

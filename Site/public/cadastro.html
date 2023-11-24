@@ -71,7 +71,6 @@
                 senhaVar.length < 4
             ) {
                 alert("Credenciais inválidas!")
-                finalizarAguardar();
                 return false;
             } else {
                 alert("Cadastro realizado com sucesso!");
@@ -89,24 +88,22 @@
                     // Agora vá para o arquivo routes/usuario.js
                     nomeServer: nomeVar,
                     emailServer: emailVar,
-                    senhaServer: senhaVar
+                    senhaServer: senhaVar,
+                    fkRelatorio: sessionStorage.ID_RELATORIO
+
+                    // idRelatorio: sessionStorage.ID_RELATORIO
+
                 }),
             })
                 .then(function (resposta) {
                     console.log("resposta: ", resposta);
 
                     if (resposta.ok) {
-                        cardErro.style.display = "block";
-
-                        mensagem_erro.innerHTML =
-                            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                         setTimeout(() => {
                             window.location = "login.html";
                         }, "2000");
 
-                        limparFormulario();
-                        finalizarAguardar();
                     } else {
                         throw "Houve um erro ao tentar realizar o cadastro!";
                     }
@@ -140,21 +137,24 @@
             })
                 .then(function (resposta) {
                     console.log("resposta: ", resposta);
-
                     if (resposta.ok) {
-                        cardErro.style.display = "block";
 
-                        mensagem_erro.innerHTML =
-                            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                        resposta.json().then(json => {
+                            console.log(json);
+                            console.log(JSON.stringify(json));
+                            sessionStorage.ID_RELATORIO = json.idRelatorio;
 
-                        setTimeout(() => {
-                            window.location = "login.html";
-                        }, "2000");
+                            setTimeout(function () {
+                                window.location = "./dashboard/cards.html";
+                            }, 1000); // apenas para exibir o loading
 
-                        limparFormulario();
-                        finalizarAguardar();
+                        });
                     } else {
-                        throw "Houve um erro ao tentar realizar o cadastro!";
+                        console.log("Houve um erro ao tentar realizar o login!");
+
+                        resposta.text().then(texto => {
+                            console.error(texto);
+                        });
                     }
                 })
                 .catch(function (resposta) {

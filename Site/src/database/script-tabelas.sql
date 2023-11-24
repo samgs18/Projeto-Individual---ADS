@@ -46,12 +46,17 @@ fkQuiz int,
 Nome varchar(45),
 Email varchar(45),
 Senha varchar(45),
-primary key (idUsuario, fkEndereco, fkRelatorio, fkQuiz),
+primary key (idUsuario),
 foreign key (fkEndereco) references Endereco(idEndereco),
 foreign key (fkRelatorio) references Relatorio(idRelatorio),
 foreign key (fkQuiz) references Quiz(idQuiz) 
 );
 
+-- select * from Usuario;
+
+-- select * from Endereco;
+
+-- select * from Relatorio;
 -- insert into empresa (razao_social, cnpj) values ('Empresa 1', '00000000000000');
 -- insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
 

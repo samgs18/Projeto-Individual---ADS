@@ -47,16 +47,16 @@ function cadastrarRelatorio(cnh, dirige, moto) {
     var instrucaoRelatorio = `
     INSERT INTO Relatorio (CNH, dirige, possuiMoto) VALUES ('${cnh}', '${dirige}', '${moto}');
     `;
-    
+    //select para pegar idRelatorio, vc vai retornar esse select para o usuariocontroller
     console.log("Executando a instrução SQL: \n" + instrucaoRelatorio);
     return database.executar(instrucaoRelatorio);
 }
 
-function cadastrar(nome, email, senha) {
+function cadastrar(fkEndereco, idRelatorio, nome, email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
 
     var instrucaoUsuario = `
-        INSERT INTO Usuario (Nome, Email, Senha) VALUES ('${nome}', '${email}', '${senha}');
+        INSERT INTO Usuario (fkEndereco, fkRelatorio, Nome, Email, Senha) VALUES ('${fkEndereco}', '${idRelatorio}', '${nome}', '${email}', '${senha}');
     `;
     
     console.log("Executando a instrução SQL: \n" + instrucaoUsuario);
