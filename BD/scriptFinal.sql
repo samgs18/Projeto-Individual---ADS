@@ -21,11 +21,11 @@ Cidade varchar(45)
 
 create table Quiz (
 idQuiz int primary key auto_increment,
-Pergunta1 varchar(45),
-Pergunta2 varchar(45),
-Pergunta3 varchar(45),
-Pergunta4 varchar(45),
-Pergunta5 varchar(45)
+Resposta1 varchar(45),
+Resposta2 varchar(45),
+Resposta3 varchar(45),
+Resposta4 varchar(45),
+Resposta5 varchar(45)
 );
 
 create table Usuario (
