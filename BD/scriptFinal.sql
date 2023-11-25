@@ -6,12 +6,9 @@ use projetoIndividual;
 
 create table Relatorio (
 idRelatorio int primary key auto_increment,
-CNH char(1),
-dirige char(1),
-possuiMoto char(1),
-constraint chkCnh check (CNH IN ('s', 'n')),
-constraint chkDIReck check(dirige IN ('s', 'n')),
-constraint chkPM check (possuiMoto IN ('s', 'n'))
+CNH char(3),
+dirige char(3),
+possuiMoto char(3)
 );
 
 create table Endereco (
@@ -31,18 +28,22 @@ Pergunta4 varchar(45),
 Pergunta5 varchar(45)
 );
 
-create table Cliente (
-idCliente int primary key auto_increment,
+create table Usuario (
+idUsuario int auto_increment,
 fkEndereco int,
 fkRelatorio int,
 fkQuiz int,
 Nome varchar(45),
 Email varchar(45),
 Senha varchar(45),
+primary key (idUsuario),
 foreign key (fkEndereco) references Endereco(idEndereco),
 foreign key (fkRelatorio) references Relatorio(idRelatorio),
 foreign key (fkQuiz) references Quiz(idQuiz) 
 );
 
+select * from Usuario;
 
-select * from Cliente;
+select * from Endereco;
+
+select * from Relatorio;
