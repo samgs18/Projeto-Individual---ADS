@@ -19,12 +19,12 @@ router.post("/cadastrarRelatorio", function (req, res) {
     usuarioController.cadastrarRelatorio(req, res);
 });
 
-router.post("/buscaridEndereco" , function (req, res){
-    usuarioController.buscaridEndereco(req,res);
-});
+// router.post("/buscaridEndereco" , function (req, res){
+//     usuarioController.buscaridEndereco(req,res);
+// });
 
-router.post("/buscaridRelatorio" , function (req, res){
-    usuarioController.buscaridRelatorio(req,res);
-});
+// router.post("/buscaridRelatorio" , function (req, res){
+//     usuarioController.buscaridRelatorio(req,res);
+// });
 
 module.exports = router;

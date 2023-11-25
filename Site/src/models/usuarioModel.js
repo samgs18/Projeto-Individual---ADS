@@ -3,29 +3,29 @@ var database = require("../database/config")
 function autenticar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
-        SELECT id, nome, email, fk_empresa as empresaId FROM Cliente WHERE email = '${email}' AND senha = '${senha}';
+        SELECT idUsuario, Nome, email, Senha FROM Usuario WHERE Email = '${email}' AND Senha = '${senha}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function buscaridEndereco(cep) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", cep)
-    var instrucao = `
-        SELECT idEndereco FROM Endereco WHERE CEP = '${cep}';
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
+// function buscaridEndereco(cep) {
+//     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", cep)
+//     var instrucao = `
+//         SELECT idEndereco FROM Endereco WHERE CEP = '${cep}';
+//     `;
+//     console.log("Executando a instrução SQL: \n" + instrucao);
+//     return database.executar(instrucao);
+// }
 
-function buscaridRelatorio(cnh) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", cnh)
-    var instrucao = `
-        SELECT idRelatorio FROM Relatorio WHERE CNH = '${cnh}';
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
+// function buscaridRelatorio(cnh) {
+//     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", cnh)
+//     var instrucao = `
+//         SELECT idRelatorio FROM Relatorio WHERE CNH = '${cnh}';
+//     `;
+//     console.log("Executando a instrução SQL: \n" + instrucao);
+//     return database.executar(instrucao);
+// }
 
 
 function cadastrarEndereco(cep, rua, bairro, cidade) {
@@ -52,22 +52,22 @@ function cadastrarRelatorio(cnh, dirige, moto) {
     return database.executar(instrucaoRelatorio);
 }
 
-function cadastrar(fkEndereco, idRelatorio, nome, email, senha) {
+function cadastrar(nome, email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
 
-    var instrucaoUsuario = `
-        INSERT INTO Usuario (fkEndereco, fkRelatorio, Nome, Email, Senha) VALUES ('${fkEndereco}', '${idRelatorio}', '${nome}', '${email}', '${senha}');
+    var instrucao = `
+        INSERT INTO Usuario (Nome, Email, Senha) VALUES ('${nome}', '${email}', '${senha}');
     `;
     
-    console.log("Executando a instrução SQL: \n" + instrucaoUsuario);
-    return database.executar(instrucaoUsuario);
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
 }
 
     module.exports = {
     autenticar,
     cadastrar,
     cadastrarEndereco,
-    cadastrarRelatorio,
-    buscaridEndereco,
-    buscaridRelatorio
+    cadastrarRelatorio
+    // buscaridEndereco,
+    // buscaridRelatorio
 };
