@@ -13,28 +13,22 @@ function autenticar(req, res) {
 
         usuarioModel.autenticar(email, senha)
             .then(
-                function (resultadoAutenticar) {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+                function (resultado) {
+                    console.log(`\nResultados encontrados: ${resultado.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultado)}`);
+                    // transforma JSON em String
+                    if (resultado.length == 1) {
+                        console.log(resultado);
+                        res.json({
+                            id: resultado[0].idUsuario,
+                            email: resultado[0].email,
+                            nome: resultado[0].nome,
+                            // senha: resultado[0].senha,
+                        });
 
-                    if (resultadoAutenticar.length == 1) {
-                        console.log(resultadoAutenticar);
-
-                        aquarioModel.autenticar(resultadoAutenticar[0].empresaId)
-                            .then((resultadoAquarios) => {
-                                if (resultadoAquarios.length > 0) {
-                                    res.json({
-                                        id: resultadoAutenticar[0].id,
-                                        cep: resultadoAutenticar[0].cep,
-                                        email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha
-                                    });
-                                } else {
-                                    res.status(204).json({ aquarios: [] });
-                                }
-                            })
-                    } else if (resultadoAutenticar.length == 0) {
+                        if (resultado.length > 0) {
+                        }
+                    } else if (resultado.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
                         res.status(403).send("Mais de um usuário com o mesmo login e senha!");
@@ -95,7 +89,7 @@ function cadastrar(req, res) {
 }
 
 function cadastrarEndereco(req, res) {
-    
+
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var cep = req.body.cepServer;
     var rua = req.body.ruaServer;
@@ -112,22 +106,22 @@ function cadastrarEndereco(req, res) {
         res.status(400).send("Sua cidade está undefined!");
     } else {
 
-    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    usuarioModel.cadastrarEndereco(cep, rua, bairro, cidade)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrarEndereco(cep, rua, bairro, cidade)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
     }
 }
 
