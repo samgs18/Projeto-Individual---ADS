@@ -32,11 +32,10 @@
                 </div>
             </div>
             <!--              -->
-            <div id="graficos" style="display: none;">
-                <h1>oi fdp</h1>
-                <div id="botao" style="display: none;">
-                    <a href="./index.html"><button class="btn">Voltar</button></a>
-                </div>
+            <div id="graficos2" style="display: none;">
+                <div id="mostrar"></div>
+                <button class="btn" onclick="resetar()">Tentar novamente</button>
+                <a href="./index.html"><button class="btn">Sair</button></a>
             </div>
         </div>
     </div>
@@ -207,6 +206,34 @@
                     }
                 }
             });
+        }
+
+        function relatar() {
+            const botao1 = document.getElementById("botao1");
+            const botao = document.getElementById("botao");
+            const grafico = document.getElementById("graficos");
+            const grafico2 = document.getElementById("graficos2");
+            grafico.style.display = "none";
+            grafico2.style.display = "block";
+            botao.style.display = "none";
+            botao1.style.display = "none";
+            questionContainer.innerText = '';
+            var porcentagem = respostaCorreta * 20;
+
+            mostrar.innerHTML = `
+            <b>Relatório do Quiz</b><br><br>
+            Número de questões: ${perguntaAtual}<br><br>
+            Acertos: ${respostaCorreta}<br><br>
+            Erros: ${respostaErrada}<br><br>
+            <u>Aproveitamento: ${porcentagem}%</u><br> 
+            `;
+        }
+
+        function resetar() {
+            respostaCorreta = 0;
+            respostaErrada = 0;
+            perguntaAtual = 0;
+            window.location = "./quiz.html";
         }
 
         // Chamada da função para iniciar o quiz
