@@ -11,29 +11,29 @@ Erros int
 );
 
 create table Usuario (
-idUsuario int auto_increment,
-fkQuiz int,
+idUsuario int primary key auto_increment,
 Nome varchar(45),
 Email varchar(45),
 Senha varchar(45),
 CNH char(3),
 Dirige char(3),
 possuiMoto char(3),
-primary key (idUsuario),
+fkQuiz int,
 foreign key (fkQuiz) references Quiz(idQuiz) 
 );
 
 create table Endereco (
-idEndereco int auto_increment,
-fkUsuario int,
+idEndereco int primary key auto_increment,
 Cep char(8),
 Rua varchar(45),
 Bairro varchar (45),
 Cidade varchar(45),
-primary key (idEndereco),
+fkUsuario int,
 foreign key (fkUsuario) references Usuario(idUsuario)
 );
 
 select * from usuario;
 
 select * from endereco;
+
+select * from quiz;
