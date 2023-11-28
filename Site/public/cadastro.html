@@ -48,24 +48,16 @@
             var emailVar = input_email.value;
             var nomeVar = input_nome.value;
             var senhaVar = input_senha.value;
-            // var dirigeVar = input_dirige.value;
-            // var cnhVar = input_cnh.value;
-            // var motoVar = input_moto.value;
-            // var cepVar = cep.value;
-            // var ruaVar = rua.value;
-            // var bairroVar = bairro.value;
-            // var cidadeVar = cidade.value;
+            var dirigeVar = input_dirige.value;
+            var cnhVar = input_cnh.value;
+            var motoVar = input_moto.value;
             if (
                 emailVar == "" ||
                 nomeVar == "" ||
                 senhaVar == "" ||
-                // dirigeVar == "" ||
-                // cnhVar == "" ||
-                // motoVar == "" ||
-                // cepVar == "" ||
-                // ruaVar == "" ||
-                // bairroVar == "" ||
-                // cidadeVar == "" ||
+                dirigeVar == "" ||
+                cnhVar == "" ||
+                motoVar == "" ||
                 emailVar.indexOf('@') == -1 ||
                 emailVar.indexOf('.') == -1 ||
                 senhaVar.length < 4
@@ -76,7 +68,6 @@
                 alert("Cadastro realizado com sucesso!");
             }
             cadastrarEndereco();
-            cadastrarRelatorio();
             // Enviando o valor da nova input
             fetch("/usuarios/cadastrar", {
                 method: "POST",
@@ -88,7 +79,10 @@
                     // Agora vá para o arquivo routes/usuario.js
                     nomeServer: nomeVar,
                     emailServer: emailVar,
-                    senhaServer: senhaVar
+                    senhaServer: senhaVar,
+                    dirigeServer: dirigeVar,
+                    cnhServer: cnhVar,
+                    motoServer: motoVar
                     // fkRelatorio: sessionStorage.ID_RELATORIO
 
                     // idRelatorio: sessionStorage.ID_RELATORIO
@@ -114,54 +108,6 @@
                 });
 
             window.location.href = "./login.html";
-        }
-
-        function cadastrarRelatorio() {
-            var dirigeVar = input_dirige.value;
-            var cnhVar = input_cnh.value;
-            var motoVar = input_moto.value;
-
-            // Enviando o valor da nova input
-            fetch("/usuarios/cadastrarRelatorio", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
-                    dirigeServer: dirigeVar,
-                    cnhServer: cnhVar,
-                    motoServer: motoVar
-                }),
-            })
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
-                    if (resposta.ok) {
-
-                        resposta.json().then(json => {
-                            console.log(json);
-                            console.log(JSON.stringify(json));
-                            sessionStorage.ID_RELATORIO = json.idRelatorio;
-
-                            setTimeout(function () {
-                                window.location = "./dashboard/cards.html";
-                            }, 1000); // apenas para exibir o loading
-
-                        });
-                    } else {
-                        console.log("Houve um erro ao tentar realizar o login!");
-
-                        resposta.text().then(texto => {
-                            console.error(texto);
-                        });
-                    }
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-                    finalizarAguardar();
-                });
-
         }
 
         function cadastrarEndereco() {

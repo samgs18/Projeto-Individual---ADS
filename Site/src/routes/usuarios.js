@@ -11,20 +11,12 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 })
 
-router.post("/cadastrarEndereco", function (req, res) {
-    usuarioController.cadastrarEndereco(req, res);
+router.post("/cadastrarendereco", function (req, res) {
+    usuarioController.cadastrarendereco(req, res);
 })
 
-router.post("/cadastrarRelatorio", function (req, res) {
-    usuarioController.cadastrarRelatorio(req, res);
+router.post("/buscarid", function (req, res) {
+    usuarioController.buscarid(req, res);
 });
-
-// router.post("/buscaridEndereco" , function (req, res){
-//     usuarioController.buscaridEndereco(req,res);
-// });
-
-// router.post("/buscaridRelatorio" , function (req, res){
-//     usuarioController.buscaridRelatorio(req,res);
-// });
 
 module.exports = router;

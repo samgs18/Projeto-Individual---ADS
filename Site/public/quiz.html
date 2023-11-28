@@ -19,7 +19,6 @@
             </div>
             <div class="kpi">
                 <div id="question-container">
-
                     <p id="question"></p>
                 </div>
                 <div id="answer-buttons" class="btn-container">
@@ -29,36 +28,190 @@
                 </div>
                 <div id="botao" style="display: none;">
                     <a href="./index.html"><button class="btn">Voltar</button></a>
+                    <button class="btn" onclick="relatar()">Relatório</button>
+                </div>
+            </div>
+            <!--              -->
+            <div id="graficos" style="display: none;">
+                <h1>oi fdp</h1>
+                <div id="botao" style="display: none;">
+                    <a href="./index.html"><button class="btn">Voltar</button></a>
                 </div>
             </div>
         </div>
     </div>
-    <script src="quiz.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const questoes = [
+            {
+                questao: '1- Qual é a função primária do óleo do motor em uma motocicleta?',
+                resposta: [
+                    { texto: 'a) Refrescar o piloto', correto: false },
+                    { texto: 'b) Lubrificar as correntes', correto: false },
+                    { texto: 'c) Aumentar a potência', correto: false },
+                    { texto: 'd) Lubrificar as peças internas do motor', correto: true }
+                ]
+            },
+            {
+                questao: '2- O que significa a sigla "CC" quando se refere à capacidade do motor de uma motocicleta?',
+                resposta: [
+                    { texto: 'a) Controle de Cruzeiro', correto: false },
+                    { texto: 'b) Capacidade de Combustível', correto: false },
+                    { texto: 'c) Centímetros Cúbicos', correto: true },
+                    { texto: 'd) Condução Confortável', correto: false }
+                ]
+            },
+            {
+                questao: '3- Qual é a finalidade das suspensões em uma motocicleta?',
+                resposta: [
+                    { texto: 'a) Melhorar a estabilidade', correto: true },
+                    { texto: 'b) Aumentar a velocidade máxima', correto: false },
+                    { texto: 'c) Carregar bagagens', correto: false },
+                    { texto: 'd) Regular a temperatura do motor', correto: false }
+                ]
+            },
+            {
+                questao: '4- O que indica a luz de controle do motor em painéis de motocicletas?',
+                resposta: [
+                    { texto: 'a) Nível de combustível baixo', correto: false },
+                    { texto: 'b) Problemas no sistema de freios', correto: false },
+                    { texto: 'c) Necessidade de troca de óleo', correto: false },
+                    { texto: 'd) Falhas no funcionamento do motor', correto: true }
+                ]
+            },
+            {
+                questao: '5- Qual é a posição correta das mãos no guidão ao pilotar uma motocicleta?',
+                resposta: [
+                    { texto: 'a) Mãos no colo', correto: false },
+                    { texto: 'b) Mãos na cabeça', correto: false },
+                    { texto: 'c) Mãos nos joelhos', correto: false },
+                    { texto: 'd) Mãos no punho do guidão', correto: true }
+                ]
+            }
+        ];
+
+        let perguntaAtual = 0;
+
+        const questionContainer = document.getElementById('question-container');
+        const answerButtonsContainer = document.getElementById('answer-buttons');
+        const nextButton = document.getElementById('next-button');
+
+        // Variáveis para armazenar acertos e erros
+        var respostaCorreta = 0;
+        var respostaErrada = 0;
+        var respostaUsuario = [];
+
+        function iniciar() {
+            perguntaAtual = 0;
+            mostrarQuestao(questoes[perguntaAtual]);
+            nextButton.classList.add('hide');
+        }
+
+        function mostrarQuestao(questao) {
+            questionContainer.innerText = questao.questao;
+            atualizarResposta();
+
+            questao.resposta.forEach(answer => {
+                const button = document.createElement('button');
+                button.innerText = answer.texto;
+                button.classList.add('btn');
+                button.addEventListener('click', () => selecionarResposta(answer));
+                answerButtonsContainer.appendChild(button);
+            });
+        }
+
+        function atualizarResposta() {
+            while (answerButtonsContainer.firstChild) {
+                answerButtonsContainer.removeChild(answerButtonsContainer.firstChild);
+            }
+        }
+
+        function selecionarResposta(answer) {
+            const buttons = answerButtonsContainer.children;
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('btn-selected');
+            }
+            const selectedButton = Array.from(buttons).find(button => button.innerText === answer.texto);
+            selectedButton.classList.add('btn-selected');
+
+            const correto = answer.correto;
+            if (correto) {
+                respostaCorreta++;
+            } else {
+                respostaErrada++;
+            }
+            respostaUsuario.push({
+                questao: questoes[perguntaAtual].questao,
+                userAnswer: answer.texto,
+                correctAnswer: questoes[perguntaAtual].resposta.find(a => a.correto).texto
+            });
+            if (correto) {
+                nextButton.classList.remove('hide');
+            }
+        }
+
+        function showResults() {
+            questionContainer.innerText = 'Resultados do Quiz';
+            atualizarResposta();
+
+            const resultsContainer = document.createElement('div');
+            resultsContainer.classList.add('results-container');
+
+            respostaUsuario.forEach(answer => {
+                const resultItem = document.createElement('p');
+                resultItem.classList.add('result-item');
+                // resultItem.innerText = `Pergunta: ${answer.questao}, Sua resposta: ${answer.userAnswer}, Resposta Correta: ${answer.correctAnswer}`;
+                resultsContainer.appendChild(resultItem);
+            });
+            document.getElementById('quiz-container').appendChild(resultsContainer);
+            nextButton.classList.add('hide');
+
+            showChart();
+        }
+
+        function nextQuestion() {
+            perguntaAtual++;
+            if (perguntaAtual < questoes.length) {
+                mostrarQuestao(questoes[perguntaAtual]);
+                nextButton.classList.add('hide');
+            } else {
+                showResults();
+                const botao1 = document.getElementById("botao1");
+                const botao = document.getElementById("botao");
+                const grafico = document.getElementById("graficos");
+                grafico.style.display = "block";
+                botao.style.display = "block";
+                botao1.style.display = "none";
+            }
+        }
+
+        function showChart() {
+            const ctx2 = document.getElementById('myChart2').getContext('2d');
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: ['Acertos', 'Erros'],
+                    datasets: [{
+                        label: 'Respostas',
+                        data: [respostaCorreta, respostaErrada],
+                        backgroundColor: ['#54a0ff', '#ff6666'],
+                        borderWidth: 1,
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Chamada da função para iniciar o quiz
+        iniciar();
+    </script>
 </body>
 
 </html>
-<script>
-    const questoesCertas = 0;
-    const questoesErradas = 0;
-
-    const ctx2 = document.getElementById('myChart2');
-    new Chart(ctx2, {
-        type: 'bar',
-        data: {
-            labels: ['Acertos', 'Erros'],
-            datasets: [{
-                label: 'Respostas',
-                data: [2, 3],
-                borderWidth: 1,
-                backgroundcolor: '#054f77'
-            },]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script>
