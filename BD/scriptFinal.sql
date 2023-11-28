@@ -33,3 +33,7 @@ Cidade varchar(45),
 primary key (idEndereco),
 foreign key (fkUsuario) references Usuario(idUsuario)
 );
+
+select * from usuario;
+
+select * from endereco;
