@@ -12,11 +12,7 @@ router.post("/autenticar", function (req, res) {
 })
 
 router.post("/cadastrarendereco", function (req, res) {
-    usuarioController.cadastrarendereco(req, res);
+    usuarioController.cadastrarEndereco(req, res);
 })
-
-router.post("/buscarid", function (req, res) {
-    usuarioController.buscarid(req, res);
-});
 
 module.exports = router;

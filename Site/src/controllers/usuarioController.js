@@ -1,8 +1,5 @@
 var usuarioModel = require("../models/usuarioModel");
 var aquarioModel = require("../models/aquarioModel");
-var idUsuario = 0;
-// var idEndereco = 0;
-// var idRelatorio = 0;
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -51,24 +48,17 @@ function autenticar(req, res) {
                 }
             );
     }
-
 }
 
 function cadastrar(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var cnh = req.body.cnhServer;
     var moto = req.body.motoServer;
     var dirige = req.body.dirigeServer;
-    var cep = req.body.cepServer;
-    var rua = req.body.ruaServer;
-    var bairro = req.body.bairroServer;
-    var cidade = req.body.cidadeServer;
-
-    // var idRelatorio = req.body.fkRelatorio;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -83,23 +73,13 @@ function cadastrar(req, res) {
         res.status(400).send("Sua cnh está undefined!");
     } else if (dirige == undefined) {
         res.status(400).send("O campo dirige undefined!");
-    } else if (cep == undefined) {
-        res.status(400).send("Seu cep está undefined!");
-    } else if (rua == undefined) {
-        res.status(400).send("Sua rua está undefined!");
-    } else if (bairro == undefined) {
-        res.status(400).send("Seu bairro está undefined!");
-    } else if (cidade == undefined) {
-        res.status(400).send("Sua cidade está undefined!");
-
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha, cnh, dirige, moto, cep, rua, bairro, cidade)
+        usuarioModel.cadastrar(nome, email, senha, cnh, dirige, moto)
             .then(
                 function (resultado) {
                     res.json(resultado);
-                    buscarid(email, senha)
                 }
             ).catch(
                 function (erro) {
@@ -114,27 +94,26 @@ function cadastrar(req, res) {
     }
 }
 
-function buscarid(email, senha) { // Definição da função para buscar o id do usuário com base no email e senha
-
-    usuarioModel.buscarid(email, senha).then( // Chama a função para buscar o id do usuário com base no email e senha fornecidos
-        function (resultado) { // Verificação de sucesso da chamada
-
-            idUsuario = resultado[0].idUsuario; // Atribui o id do usuário ao idUsuario
-            cadastrarendereco(cep, rua, bairro, cidade); // Chama a função para cadastrar a experiência com o tempo, grau e experiência fornecidos
-
-        }
-    )
-}
-
-function cadastrarendereco(req, res) {
+function cadastrarEndereco(req, res) {
+    
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var cep = req.body.cepServer;
     var rua = req.body.ruaServer;
     var bairro = req.body.bairroServer;
     var cidade = req.body.cidadeServer;
 
+    if (cep == undefined) {
+        res.status(400).send("Seu cep está undefined!");
+    } else if (rua == undefined) {
+        res.status(400).send("Sua rua está undefined!");
+    } else if (bairro == undefined) {
+        res.status(400).send("Seu bairro está undefined!");
+    } else if (cidade == undefined) {
+        res.status(400).send("Sua cidade está undefined!");
+    } else {
+
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    usuarioModel.cadastrarEndereco(idUsuario, cep, rua, bairro, cidade)
+    usuarioModel.cadastrarEndereco(cep, rua, bairro, cidade)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -149,11 +128,11 @@ function cadastrarendereco(req, res) {
                 res.status(500).json(erro.sqlMessage);
             }
         );
+    }
 }
 
 module.exports = {
     autenticar,
     cadastrar,
-    cadastrarendereco,
-    buscarid
+    cadastrarEndereco
 }
