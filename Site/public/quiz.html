@@ -128,7 +128,7 @@
 
         function selecionarResposta(answer) {
             const buttons = answerButtonsContainer.children;
-            for (let i = 0; i < buttons.length; i++) {
+            for (var i = 0; i < buttons.length; i++) {
                 buttons[i].classList.remove('btn-selected');
             }
             const selectedButton = Array.from(buttons).find(button => button.innerText === answer.texto);
